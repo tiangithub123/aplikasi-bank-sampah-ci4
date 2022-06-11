@@ -40,6 +40,7 @@ $routes->group('admin', function ($routes) {
     $routes->get('/', 'Login::index');
     $routes->get('dashboard', 'Dashboard::index', ['filter' => 'authadmin']);
     $routes->get('user', 'User::index', ['filter' => 'authadmin']);
+    $routes->get('logout', 'Dashboard::logout', ['filter' => 'authadmin']);
 });
 
 /*

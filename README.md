@@ -4,9 +4,12 @@
 
 - Backhend
   - [x] Login
-  - [ ] Dashboard
+  - [x] Dashboard
   - [ ] Data Sampah
   - [ ] Jenis Sampah
+  - [ ] Pengaturan Profil
+  - [x] Managemen User
+  - [x] LogOut
 - Frontend
   - [ ] Login
   - [ ] Register

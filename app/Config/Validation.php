@@ -132,4 +132,37 @@ class Validation extends BaseConfig
             ]
         ]
     ];
+
+    public $profil = [
+        'nama_user' => [
+            'label'  => 'Nama User',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Nama User tidak boleh kosong!'
+            ]
+        ],
+        'username' => [
+            'label'  => 'Username',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Username tidak boleh kosong!'
+            ]
+        ],
+        'level' => [
+            'label'  => 'Level',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Level tidak boleh kosong!'
+            ]
+        ],
+        'foto' => [
+            'label'  => 'Foto',
+            'rules'  => 'max_size[foto,2048]|is_image[foto]|mime_in[foto,image/jpg,image/jpeg,image/png,image/gif]',
+            'errors' => [
+                'max_size' => 'Ukuran File Foto maksimal 2MB!',
+                'is_image' => 'Yang anda pilih bukan gambar!',
+                'mime_in'  => 'Format Foto tidak sesuai!'
+            ]
+        ]
+    ];
 }

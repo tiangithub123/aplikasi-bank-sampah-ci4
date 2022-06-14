@@ -36,8 +36,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php echo base_url('admin/user'); ?>" class="nav-link <?php if ($page == 'user') echo " active";  ?>">
+                    <a href="<?php echo base_url('admin/profil'); ?>" class="nav-link <?php if ($page == 'profil') echo " active";  ?>">
                         <i class="nav-icon fas fa-user-cog"></i>
+                        <p>Pengaturan Profil</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?php echo base_url('admin/user'); ?>" class="nav-link <?php if ($page == 'user') echo " active";  ?>">
+                        <i class="nav-icon fas fa-users"></i>
                         <p>Managemen User</p>
                     </a>
                 </li>

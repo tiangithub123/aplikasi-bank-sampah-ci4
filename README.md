@@ -7,7 +7,8 @@
   - [x] Dashboard
   - [ ] Data Sampah
   - [ ] Jenis Sampah
-  - [ ] Pengaturan Profil
+  - [ ] Satuan Sampah
+  - [x] Pengaturan Profil
   - [x] Managemen User
   - [x] LogOut
 - Frontend

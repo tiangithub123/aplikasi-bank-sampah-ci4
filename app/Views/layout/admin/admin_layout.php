@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="/assets/plugins/fontawesome-free/css/all.min.css">
     <!-- SweetAlert2 -->
     <link href="/assets/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css" rel="stylesheet">
+    <!-- Chosen Select -->
+    <link href="/assets/plugins/chosen/css/chosen.css" rel="stylesheet">
     <!-- Datepicker CSS -->
     <link rel="stylesheet" href="/assets/plugins/datepicker/css/datepicker.min.css">
     <!-- DataTables -->
@@ -55,6 +57,8 @@
     <script src="/assets/plugins/moment/moment.min.js"></script>
     <!-- SweetAlert2 -->
     <script src="/assets/plugins/sweetalert2/sweetalert2.all.min.js"></script>
+    <!--  Chosen Select -->
+    <script src="/assets/plugins/chosen/js/chosen.jquery.js"></script>
     <!-- datepicker Plugin JS -->
     <script src="/assets/plugins/datepicker/js/bootstrap-datepicker.min.js"></script>
     <!-- DataTables -->
@@ -84,6 +88,8 @@
                 autoclose: true,
                 todayHighlight: true
             });
+            // chosen select
+            $('.chosen-select').chosen();
             // ============================================= Logout ==========================================
             $("#logout").click(function() {
                 // tampilkan notifikasi saat akan logout

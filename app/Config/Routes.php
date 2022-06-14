@@ -39,6 +39,7 @@ $routes->get('/', 'Home::index');
 $routes->group('admin', function ($routes) {
     $routes->get('/', 'Login::index');
     $routes->get('dashboard', 'Dashboard::index', ['filter' => 'authadmin']);
+    $routes->get('sampah', 'Sampah::index', ['filter' => 'authadmin']);
     $routes->get('jenis', 'Jenis::index', ['filter' => 'authadmin']);
     $routes->get('satuan', 'Satuan::index', ['filter' => 'authadmin']);
     $routes->get('profil', 'Profil::index', ['filter' => 'authadmin']);

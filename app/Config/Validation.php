@@ -60,6 +60,54 @@ class Validation extends BaseConfig
         ]
     ];
 
+    // Validasi Data sampah
+    public $sampah = [
+        'nama_sampah' => [
+            'label'  => 'Nama Sampah',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Nama Sampah tidak boleh kosong!'
+            ]
+        ],
+        'id_jenis' => [
+            'label'  => 'Jenis Sampah',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Jenis Sampah tidak boleh kosong!'
+            ]
+        ],
+        'id_satuan' => [
+            'label'  => 'Satuan',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Satuan tidak boleh kosong!'
+            ]
+        ],
+        'deskripsi' => [
+            'label'  => 'Deskripsi',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Deskripsi tidak boleh kosong!'
+            ]
+        ],
+        'harga' => [
+            'label'  => 'Harga',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Harga tidak boleh kosong!'
+            ]
+        ],
+        'foto' => [
+            'label'  => 'Foto',
+            'rules'  => 'max_size[foto,2048]|is_image[foto]|mime_in[foto,image/jpg,image/jpeg,image/png,image/gif]',
+            'errors' => [
+                'max_size' => 'Ukuran File Foto maksimal 2MB!',
+                'is_image' => 'Yang anda pilih bukan gambar!',
+                'mime_in'  => 'Format Foto tidak sesuai!'
+            ]
+        ]
+    ];
+
     // Validasi Jenis
     public $jenis = [
         'nama_jenis' => [
@@ -82,7 +130,7 @@ class Validation extends BaseConfig
         ]
     ];
 
-    // Validasi Data Kendaraan
+    // Validasi Data user
     public $user_add = [
         'nama_user' => [
             'label'  => 'Nama User',

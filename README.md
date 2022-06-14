@@ -5,7 +5,7 @@
 - Backhend
   - [x] Login
   - [x] Dashboard
-  - [ ] Data Sampah
+  - [x] Data Sampah
   - [x] Jenis Sampah
   - [x] Satuan Sampah
   - [x] Pengaturan Profil

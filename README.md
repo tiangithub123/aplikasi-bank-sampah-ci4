@@ -6,7 +6,7 @@
   - [x] Login
   - [x] Dashboard
   - [ ] Data Sampah
-  - [ ] Jenis Sampah
+  - [x] Jenis Sampah
   - [x] Satuan Sampah
   - [x] Pengaturan Profil
   - [x] Managemen User

@@ -60,6 +60,17 @@ class Validation extends BaseConfig
         ]
     ];
 
+    // Validasi Jenis
+    public $jenis = [
+        'nama_jenis' => [
+            'label'  => 'Nama Jenis',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Nama Jenis Tidak Boleh Kosong!'
+            ]
+        ]
+    ];
+
     // Validasi Satuan
     public $satuan = [
         'nama_satuan' => [

@@ -60,6 +60,17 @@ class Validation extends BaseConfig
         ]
     ];
 
+    // Validasi Satuan
+    public $satuan = [
+        'nama_satuan' => [
+            'label'  => 'Nama Satuan',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Nama Satuan Tidak Boleh Kosong!'
+            ]
+        ]
+    ];
+
     // Validasi Data Kendaraan
     public $user_add = [
         'nama_user' => [

@@ -39,6 +39,7 @@
                                         <th>Satuan</th>
                                         <th>Harga</th>
                                         <th>Deskripsi</th>
+                                        <th>Stok</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -108,6 +109,11 @@
                                     <label>Harga</label>
                                     <input type="text" class="form-control" id="harga" name="harga" onKeyPress="return goodchars(event,'0123456789',this)" autocomplete="off">
                                     <small id="harga_error" class="text-danger"></small>
+                                </div>
+                                <div class="form-group">
+                                    <label>Stok</label>
+                                    <input type="number" class="form-control" id="stok" name="stok" autocomplete="off">
+                                    <small id="stok_error" class="text-danger"></small>
                                 </div>
                                 <div class="form-group">
                                     <label>Foto</label>
@@ -242,8 +248,13 @@
                     "width": '200px',
                 },
                 {
-                    "responsivePriority": 2,
                     "targets": [7],
+                    "width": '100px',
+                    "className": 'text-center',
+                },
+                {
+                    "responsivePriority": 2,
+                    "targets": [8],
                     "orderable": false,
                     "width": '80px',
                     "className": 'text-center',
@@ -282,6 +293,7 @@
                     $('#id_jenis').val(data.id_jenis).trigger('chosen:updated');
                     $('#id_satuan').val(data.id_satuan).trigger('chosen:updated');
                     $('#deskripsi').val(data.deskripsi);
+                    $('#stok').val(data.stok);
                     $('#harga').val(convertToRupiah(data.harga));
                     $('#imagePreview').show();
                     if (data.foto == '') {
@@ -320,6 +332,8 @@
                             else $('#deskripsi_error').html('');
                             if (data.sampah_error['harga'] != '') $('#harga_error').html(data.sampah_error['harga']);
                             else $('#harga_error').html('');
+                            if (data.sampah_error['stok'] != '') $('#stok_error').html(data.sampah_error['stok']);
+                            else $('#stok_error').html('');
                             if (data.sampah_error['foto'] != '') $('#foto_error').html(data.sampah_error['foto']);
                             else $('#foto_error').html('');
                         }
@@ -333,6 +347,7 @@
                             $('#id_satuan_error').html('');
                             $('#deskripsi_error').html('');
                             $('#harga_error').html('');
+                            $('#stok_error').html('');
                             $('#foto_error').html('');
                             $('#tabel-sampah').DataTable().ajax.reload();
                             // tampilkan pesan sukses simpan data
@@ -367,6 +382,8 @@
                             else $('#deskripsi_error').html('');
                             if (data.sampah_error['harga'] != '') $('#harga_error').html(data.sampah_error['harga']);
                             else $('#harga_error').html('');
+                            if (data.sampah_error['stok'] != '') $('#stok_error').html(data.sampah_error['stok']);
+                            else $('#stok_error').html('');
                             if (data.sampah_error['foto'] != '') $('#foto_error').html(data.sampah_error['foto']);
                             else $('#foto_error').html('');
                         }
@@ -380,6 +397,7 @@
                             $('#id_satuan_error').html('');
                             $('#deskripsi_error').html('');
                             $('#harga_error').html('');
+                            $('#stok_error').html('');
                             $('#foto_error').html('');
                             $('#tabel-sampah').DataTable().ajax.reload();
                             // tampilkan pesan sukses simpan data

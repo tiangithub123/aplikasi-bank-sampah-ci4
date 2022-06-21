@@ -36,6 +36,9 @@ class Sampah extends Migration
             'deskripsi'      => [
                 'type' => 'TEXT',
             ],
+            'stok'      => [
+                'type'       => 'INT',
+            ],
             'foto'      => [
                 'type'       => 'VARCHAR',
                 'constraint' => 100,

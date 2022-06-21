@@ -69,6 +69,7 @@ class Sampah extends BaseController
         $id_satuan   = $this->request->getPost('id_satuan');
         $harga       = str_replace('.', '', trim($this->request->getPost('harga')));
         $deskripsi   = $this->request->getPost('deskripsi');
+        $stok        = $this->request->getPost('stok');
         $foto        = $this->request->getFile('foto');
 
         $data_validasi = [
@@ -77,6 +78,7 @@ class Sampah extends BaseController
             'id_satuan'   => $id_satuan,
             'harga'       => $harga,
             'deskripsi'   => $deskripsi,
+            'stok'        => $stok,
             'foto'        => $foto
         ];
 
@@ -99,7 +101,8 @@ class Sampah extends BaseController
                     'id_jenis'    => $id_jenis,
                     'id_satuan'   => $id_satuan,
                     'harga'       => $harga,
-                    'deskripsi'   => $deskripsi
+                    'deskripsi'   => $deskripsi,
+                    'stok'        => $stok
                 ];
                 //Simpan data sampah
                 $this->M_sampah->save($data);
@@ -119,6 +122,7 @@ class Sampah extends BaseController
                     'id_satuan'   => $id_satuan,
                     'harga'       => $harga,
                     'deskripsi'   => $deskripsi,
+                    'stok'        => $stok,
                     'foto'        => $nama_foto
                 ];
                 //Simpan Data Sampah
@@ -141,6 +145,7 @@ class Sampah extends BaseController
         $id_satuan   = $this->request->getPost('id_satuan');
         $harga       = str_replace('.', '', trim($this->request->getPost('harga')));
         $deskripsi   = $this->request->getPost('deskripsi');
+        $stok        = $this->request->getPost('stok');
         $foto        = $this->request->getFile('foto');
 
         //data sampah
@@ -150,6 +155,7 @@ class Sampah extends BaseController
             'id_satuan'   => $id_satuan,
             'harga'       => $harga,
             'deskripsi'   => $deskripsi,
+            'stok'        => $stok,
             'foto'        => $foto
         ];
 
@@ -171,7 +177,8 @@ class Sampah extends BaseController
                     'id_jenis'    => $id_jenis,
                     'id_satuan'   => $id_satuan,
                     'harga'       => $harga,
-                    'deskripsi'   => $deskripsi
+                    'deskripsi'   => $deskripsi,
+                    'stok'        => $stok
                 ];
                 //Update data sampah
                 $this->M_sampah->update($id, $data);
@@ -191,6 +198,7 @@ class Sampah extends BaseController
                     'id_satuan'   => $id_satuan,
                     'harga'       => $harga,
                     'deskripsi'   => $deskripsi,
+                    'stok'        => $stok,
                     'foto'        => $nama_foto
                 ];
                 // hapus foto lama
@@ -237,6 +245,7 @@ class Sampah extends BaseController
                 $row[] = $list->nama_satuan;
                 $row[] = $list->harga;
                 $row[] = $list->deskripsi;
+                $row[] = $list->stok;
                 $row[] = $this->_action($list->id);
                 $data[] = $row;
             }

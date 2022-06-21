@@ -131,6 +131,13 @@ class Validation extends BaseConfig
                 'required' => 'Harga tidak boleh kosong!'
             ]
         ],
+        'stok' => [
+            'label'  => 'Stok',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Stok tidak boleh kosong!'
+            ]
+        ],
         'foto' => [
             'label'  => 'Foto',
             'rules'  => 'max_size[foto,2048]|is_image[foto]|mime_in[foto,image/jpg,image/jpeg,image/png,image/gif]',

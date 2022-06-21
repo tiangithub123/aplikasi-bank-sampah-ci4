@@ -9,9 +9,9 @@ class SampahModel extends Model
 {
     protected $table = "sampah";
     protected $primaryKey = 'id';
-    protected $allowedFields = ['nama_sampah', 'id_jenis', 'id_satuan', 'harga', 'deskripsi', 'foto'];
-    protected $column_order = [null, 'nama_sampah', 'id_jenis', 'id_satuan', 'harga', 'deskripsi', 'foto', null];
-    protected $column_search = ['nama_sampah', 'id_jenis', 'id_satuan', 'harga', 'deskripsi', 'foto'];
+    protected $allowedFields = ['nama_sampah', 'id_jenis', 'id_satuan', 'harga', 'deskripsi', 'stok', 'foto'];
+    protected $column_order = [null, 'nama_sampah', 'id_jenis', 'id_satuan', 'harga', 'deskripsi', 'stok', 'foto', null];
+    protected $column_search = ['nama_sampah', 'id_jenis', 'id_satuan', 'harga', 'deskripsi', 'stok', 'foto'];
     protected $order = ['id' => 'desc'];
     protected $request;
     protected $db;
@@ -20,10 +20,10 @@ class SampahModel extends Model
     function __construct(RequestInterface $request)
     {
         parent::__construct();
-        $this->db = db_connect();
+        $this->db      = db_connect();
         $this->request = $request;
-        $this->dt = $this->db->table($this->table);
-        $this->dt      = $this->db->table($this->table)->select('sampah.id, foto, nama_sampah, jenis.nama_jenis, satuan.nama_satuan, harga, deskripsi')
+        $this->dt      = $this->db->table($this->table);
+        $this->dt      = $this->db->table($this->table)->select('sampah.id, foto, nama_sampah, jenis.nama_jenis, satuan.nama_satuan, harga, deskripsi, stok')
         ->join('jenis', 'jenis.id = sampah.id_jenis', 'left')
         ->join('satuan', 'satuan.id = sampah.id_satuan', 'left');
     }

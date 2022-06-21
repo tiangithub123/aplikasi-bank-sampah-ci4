@@ -4,11 +4,13 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\UserModel;
+use App\Models\NasabahModel;
 use Config\Services;
 
 class Profil extends BaseController
 {
     protected $M_user;
+    protected $M_nasabah;
     protected $request;
     protected $form_validation;
     protected $session;
@@ -17,10 +19,12 @@ class Profil extends BaseController
     {
         $this->request         = Services::request();
         $this->M_user          = new UserModel($this->request);
+        $this->M_nasabah       = new NasabahModel($this->request);
         $this->form_validation = \Config\Services::validation();
         $this->session         = \Config\Services::session();
     }
 
+    // Halaman profil
     public function index()
     {
         $data['title']     = "Pengaturan Profil | Aplikasi Bank Sampah";
@@ -33,6 +37,18 @@ class Profil extends BaseController
         return view('profil/index', $data);
     }
 
+    // Halaman profil user
+    public function index_user()
+    {
+        $data['title']        = "Pengaturan Profil | Aplikasi Bank Sampah";
+        $data['menu']         = "";
+        $data['page']         = "profil";
+        $data['id']           = $this->session->get('id');
+        $data['nama_nasabah'] = $this->session->get('nama_nasabah');
+        $data['foto']         = $this->session->get('foto');
+        return view('profil/index_user', $data);
+    }
+
     // Tampilkan data saat edit
     public function show($id_user)
     {
@@ -40,7 +56,14 @@ class Profil extends BaseController
         echo json_encode($data);
     }
 
-    // Update data user
+    // Tampilkan data saat edit user
+    public function show_user($id_user)
+    {
+        $data = $this->M_nasabah->find($id_user);
+        echo json_encode($data);
+    }
+
+    // Update data
     public function update()
     {
         $id            = $this->request->getPost('id_user');
@@ -140,6 +163,127 @@ class Profil extends BaseController
                 }
                 //Update data user
                 $this->M_user->update($id, $data);
+
+                $validasi = [
+                    'success'   => true
+                ];
+                echo json_encode($validasi);
+            }
+        }
+    }
+
+    // Update data user
+    public function update_user()
+    {
+        $id           = $this->request->getPost('id_user');
+        $nama_nasabah = $this->request->getPost('nama_nasabah');
+        $username     = $this->request->getPost('username');
+        $password     = $this->request->getPost('password');
+        $alamat       = $this->request->getPost('alamat');
+        $telepon      = $this->request->getPost('telepon');
+        $no_rekening  = $this->request->getPost('no_rekening');
+        $foto         = $this->request->getFile('foto');
+
+        //data nasabah
+        $data_validasi = [
+            'nama_nasabah' => $nama_nasabah,
+            'username'     => $username,
+            'alamat'       => $alamat,
+            'telepon'      => $telepon,
+            'no_rekening'  => $no_rekening,
+            'foto'         => $foto
+        ];
+
+        //Cek Validasi data nasabah, Jika Data Tidak Valid 
+        if ($this->form_validation->run($data_validasi, 'profil_user') == FALSE) {
+
+            $validasi = [
+                'error'   => true,
+                'nasabah_error' => $this->form_validation->getErrors()
+            ];
+            echo json_encode($validasi);
+        }
+        //Data Valid
+        else {
+            if ($foto == '' && $password == '') {
+                //data nasabah
+                $data = [
+                    'nama_nasabah' => $nama_nasabah,
+                    'username'     => $username,
+                    'alamat'       => $alamat,
+                    'telepon'      => $telepon,
+                    'no_rekening'  => $no_rekening
+                ];
+                //Update data nasabah
+                $this->M_nasabah->update($id, $data);
+
+                $validasi = [
+                    'success'   => true
+                ];
+                echo json_encode($validasi);
+            } else if ($foto != '' && $password == '') {
+                //Pindahkan file foto peserta ke direktori public/nasabah
+                $nama_foto = $foto->getRandomName();
+                $foto->move('images/nasabah', $nama_foto);
+                //data nasabah
+                $data = [
+                    'nama_nasabah' => $nama_nasabah,
+                    'username'     => $username,
+                    'alamat'       => $alamat,
+                    'telepon'      => $telepon,
+                    'no_rekening'  => $no_rekening,
+                    'foto'         => $nama_foto
+                ];
+                // hapus foto lama
+                $old_foto = $this->M_nasabah->find($id);
+                if ($old_foto['foto'] == true) {
+                    unlink('images/nasabah/' . $old_foto['foto']);
+                }
+                //Update data nasabah
+                $this->M_nasabah->update($id, $data);
+
+                $validasi = [
+                    'success'   => true
+                ];
+                echo json_encode($validasi);
+            } else if ($foto == '' && $password != '') {
+                //data nasabah
+                $data = [
+                    'nama_nasabah' => $nama_nasabah,
+                    'username'     => $username,
+                    'password'     => password_hash($password, PASSWORD_DEFAULT),
+                    'alamat'       => $alamat,
+                    'telepon'      => $telepon,
+                    'no_rekening'  => $no_rekening
+                ];
+                //Update data nasabah
+                $this->M_nasabah->update($id, $data);
+
+                $validasi = [
+                    'success'   => true
+                ];
+                echo json_encode($validasi);
+            } else {
+                //Pindahkan file foto peserta ke direktori public/nasabah
+                $nama_foto = $foto->getRandomName();
+                $foto->move('images/nasabah', $nama_foto);
+                //data nasabah
+                $data = [
+                    'nama_nasabah' => $nama_nasabah,
+                    'username'     => $username,
+                    'password'     => password_hash($password, PASSWORD_DEFAULT),
+                    'alamat'       => $alamat,
+                    'telepon'      => $telepon,
+                    'no_rekening'  => $no_rekening,
+                    'foto'         => $nama_foto
+                ];
+                // hapus foto lama
+                $old_foto = $this->M_nasabah->find($id);
+                if ($old_foto['foto'] == true) {
+                    unlink('images/nasabah/' . $old_foto['foto']);
+                }
+                //Update data nasabah
+                $this->M_nasabah->update($id, $data);
 
                 $validasi = [
                     'success'   => true

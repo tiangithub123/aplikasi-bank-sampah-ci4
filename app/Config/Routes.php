@@ -47,6 +47,11 @@ $routes->group('admin', function ($routes) {
     $routes->get('logout', 'Dashboard::logout', ['filter' => 'authadmin']);
 });
 
+$routes->group('user', function ($routes) {
+    $routes->get('/', 'Login::login_user');
+    $routes->get('register', 'Login::register_user');
+});
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

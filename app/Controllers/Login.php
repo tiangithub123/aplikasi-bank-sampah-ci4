@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use Config\Services;
 use App\Models\UserModel;
+use App\Models\NasabahModel;
 
 class Login extends BaseController
 {
@@ -11,6 +12,7 @@ class Login extends BaseController
     protected $form_validation;
     protected $session;
     protected $M_user;
+    protected $M_nasabah;
 
     public function __construct()
     {
@@ -18,13 +20,71 @@ class Login extends BaseController
         $this->form_validation = \Config\Services::validation();
         $this->session         = \Config\Services::session();
         $this->M_user          = new UserModel($this->request);
+        $this->M_nasabah       = new NasabahModel($this->request);
     }
 
-    // Halaman Login
+    // Halaman Login admin
     public function index()
     {
         $data['title']   = "Login | Aplikasi Bank Sampah";
         return view('login-admin/index', $data);
+    }
+
+    // Halaman login user
+    public function login_user()
+    {
+        $data['title']   = "Login | Aplikasi Bank Sampah";
+        return view('login-user/index', $data);
+    }
+
+    // Halaman register user
+    public function register_user()
+    {
+        $data['title']   = "Register | Aplikasi Bank Sampah";
+        return view('login-user/register', $data);
+    }
+
+    // register cek
+    public function cek_register()
+    {
+        $nama_nasabah    = $this->request->getPost('nama_nasabah');
+        $username        = $this->request->getPost('username');
+        $password        = $this->request->getPost('password');
+        $ulangi_password = $this->request->getPost('ulangi_password');
+
+        $data_validasi = [
+            'nama_nasabah'    => $nama_nasabah,
+            'username'        => $username,
+            'password'        => $password,
+            'ulangi_password' => $ulangi_password
+        ];
+
+        //Cek Validasi Data User, Jika Data Tidak Valid 
+        if ($this->form_validation->run($data_validasi, 'register') == FALSE) {
+
+            $validasi = [
+                'error'   => true,
+                'register_error' => $this->form_validation->getErrors()
+            ];
+            echo json_encode($validasi);
+        }
+        //Data Valid
+        else {
+            //data nasabah
+            $data = [
+                'nama_nasabah' => $nama_nasabah,
+                'username'     => $username,
+                'password'     => password_hash($ulangi_password, PASSWORD_DEFAULT)
+            ];
+            //Simpan data nasabah
+            $this->M_nasabah->save($data);
+
+            $validasi = [
+                'success' => true,
+                'link'    => base_url('/user')
+            ];
+            echo json_encode($validasi);
+        }
     }
 
     // Cek Login

@@ -5,13 +5,13 @@ namespace App\Models;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\Model;
 
-class UserModel extends Model
+class NasabahModel extends Model
 {
-    protected $table = "user";
+    protected $table = "nasabah";
     protected $primaryKey = 'id';
-    protected $allowedFields = ['nama_user', 'username', 'password', 'level', 'foto'];
-    protected $column_order = [null, 'nama_user', 'level', null];
-    protected $column_search = ['nama_user', 'level'];
+    protected $allowedFields = ['nama_nasabah', 'username', 'password', 'alamat', 'telepon','no_rekening','saldo', 'foto'];
+    protected $column_order = [null, 'nama_nasabah', 'level', null];
+    protected $column_search = ['nama_nasabah','level'];
     protected $order = ['id' => 'desc'];
     protected $request;
     protected $db;

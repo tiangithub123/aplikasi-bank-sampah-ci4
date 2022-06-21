@@ -60,6 +60,40 @@ class Validation extends BaseConfig
         ]
     ];
 
+    // Validasi Register
+    public $register = [
+        'nama_nasabah' => [
+            'label'  => 'Nama Lengkap',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Nama Lengkap Tidak Boleh Kosong!'
+            ]
+        ],
+        'username' => [
+            'label'  => 'Username',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Username Tidak Boleh Kosong!'
+            ]
+        ],
+        'password' => [
+            'label'  => 'Password',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Password Tidak Boleh Kosong!'
+            ]
+        ],
+        'ulangi_password' => [
+            'label'  => 'Ulangi Password',
+            'rules'  => 'required|matches[password]',
+            'errors' => [
+                'required' => 'Ulangi Password Tidak Boleh Kosong!',
+                'matches'  => 'Ulangi Password Salah!'
+            ]
+        ]
+    ];
+
+
     // Validasi Data sampah
     public $sampah = [
         'nama_sampah' => [

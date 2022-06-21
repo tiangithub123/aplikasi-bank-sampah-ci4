@@ -27,11 +27,28 @@ class Dashboard extends BaseController
         return view('dashboard/index', $data);
     }
 
-    // Bug 1 : belum mengarah ke login admin
+    // Halaman Dashboard user
+    public function index_user()
+    {
+        $data['title']        = "Dashboard | Aplikasi Bank Sampah";
+        $data['menu']         = "";
+        $data['page']         = "dashboard";
+        $data['nama_nasabah'] = $this->session->get('nama_nasabah');
+        $data['foto']         = $this->session->get('foto');
+        return view('dashboard/index_user', $data);
+    }
+
     // Logout
     public function logout()
     {
         $this->session->destroy();
         return redirect()->to('/admin');
+    }
+
+    // Logout user
+    public function logout_user()
+    {
+        $this->session->destroy();
+        return redirect()->to('/user');
     }
 }

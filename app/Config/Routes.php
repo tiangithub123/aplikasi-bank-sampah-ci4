@@ -50,6 +50,9 @@ $routes->group('admin', function ($routes) {
 $routes->group('user', function ($routes) {
     $routes->get('/', 'Login::login_user');
     $routes->get('register', 'Login::register_user');
+    $routes->get('dashboard', 'Dashboard::index_user', ['filter' => 'authuser']);
+    $routes->get('profil', 'Profil::index_user', ['filter' => 'authuser']);
+    $routes->get('logout', 'Dashboard::logout_user', ['filter' => 'authuser']);
 });
 
 /*

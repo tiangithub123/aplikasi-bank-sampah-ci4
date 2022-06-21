@@ -35,7 +35,7 @@
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <?= $this->include('layout/admin/sidebar_admin') ?>
+        <?= $this->include('layout/admin/sidebar_user') ?>
 
         <!-- Content Wrapper. Contains page content -->
         <?= $this->renderSection('content') ?>

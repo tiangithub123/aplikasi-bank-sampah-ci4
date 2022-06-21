@@ -99,7 +99,7 @@
                 const formLogin = $('#formLogin');
 
                 $.ajax({
-                    url: "/Login/cek_login",
+                    url: "/Login/cek_login_user",
                     method: "POST",
                     data: formLogin.serialize(),
                     dataType: "JSON",

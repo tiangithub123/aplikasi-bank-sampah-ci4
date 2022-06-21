@@ -158,4 +158,75 @@ class Login extends BaseController
             }
         }
     }
+
+    // Cek Login
+    public function cek_login_user()
+    {
+        $username = $this->request->getPost('username');
+        $password = $this->request->getPost('password');
+
+        //Validasi 
+        $cek_validasi = [
+            'username' => $username,
+            'password' => $password
+        ];
+
+        //Cek Validasi, Jika Data Tidak Valid 
+        if ($this->form_validation->run($cek_validasi, 'login') == FALSE) {
+
+            $validasi = [
+                'error'   => true,
+                'login_error' => $this->form_validation->getErrors()
+            ];
+            echo json_encode($validasi);
+        }
+        // Jika Data Valid
+        else {
+
+            // Cek Data nasabah berdasarkan username
+            $cekUser = $this->M_nasabah->where('username', $username)->first();
+            // Jika user ada
+            if ($cekUser) {
+                $password_hash = $cekUser['password'];
+                //Cek password
+                //Jika password benar
+                if (password_verify($password, $password_hash)) {
+                    $newdata = [
+                        'id'           => $cekUser['id'],
+                        'nama_nasabah' => $cekUser['nama_nasabah'],
+                        'username'     => $cekUser['username'],
+                        'foto'         => $cekUser['foto'],
+                        'logged_in'    => TRUE
+                    ];
+                    $this->session->set($newdata);
+                    //Admin
+                    $validasi = [
+                        'success'   => true,
+                        'link'   => base_url('user/dashboard')
+                    ];
+                    echo json_encode($validasi);
+                }
+                //Password salah
+                else {
+                    $validasi = [
+                        'error'       => true,
+                        'login_error' => [
+                            'password' => 'Password Salah!'
+                        ]
+                    ];
+                    echo json_encode($validasi);
+                }
+            }
+            //Dan jika user tidak ada
+            else {
+                $validasi = [
+                    'error'       => true,
+                    'login_error' => [
+                        'username' => 'Username Tidak Terdaftar!'
+                    ]
+                ];
+                echo json_encode($validasi);
+            }
+        }
+    }
 }

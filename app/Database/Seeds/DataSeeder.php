@@ -13,5 +13,6 @@ class DataSeeder extends Seeder
         $this->call('JenisSeeder');
         $this->call('SatuanSeeder');
         $this->call('SampahSeeder');
+        $this->call('SetorSampahSeeder');
     }
 }

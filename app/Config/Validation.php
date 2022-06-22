@@ -323,4 +323,36 @@ class Validation extends BaseConfig
             ]
         ]
     ];
+
+    // Validasi transaksi setor sampah
+    public $setor_sampah_user = [
+        'id_sampah' => [
+            'label'  => 'Nama Sampah',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Nama Sampah tidak boleh kosong!'
+            ]
+        ],
+        'jumlah' => [
+            'label'  => 'Jumlah',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Jumlah tidak boleh kosong!'
+            ]
+        ],
+        'total' => [
+            'label'  => 'Total',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Total tidak boleh kosong!'
+            ]
+        ],
+        'tgl_penjemputan' => [
+            'label'  => 'Tgl. Penjemputan',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Tgl. Penjemputan tidak boleh kosong!'
+            ]
+        ]
+    ];
 }

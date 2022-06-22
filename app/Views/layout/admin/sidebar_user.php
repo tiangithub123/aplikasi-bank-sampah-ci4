@@ -36,6 +36,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="<?php echo base_url('user/transaksi-setor-sampah'); ?>" class="nav-link <?php if ($page == 'transaksi-setor-sampah') echo " active";  ?>">
+                        <i class="nav-icon fas fa-trash-alt"></i>
+                        <p>Transaksi Setor Sampah</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="<?php echo base_url('user/profil'); ?>" class="nav-link <?php if ($page == 'profil') echo " active";  ?>">
                         <i class="nav-icon fas fa-user-cog"></i>
                         <p>Pengaturan Profil</p>

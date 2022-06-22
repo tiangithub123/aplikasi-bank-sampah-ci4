@@ -35,10 +35,6 @@ class Nasabah extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => 255,
             ],
-            'no_rekening'      => [
-                'type'       => 'VARCHAR',
-                'constraint' => 100,
-            ],
             'saldo'      => [
                 'type'       => 'INT',
             ],

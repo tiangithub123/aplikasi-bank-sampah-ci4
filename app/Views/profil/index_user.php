@@ -50,11 +50,6 @@
                                                 <input type="text" class="form-control" id="telepon" name="telepon" onKeyPress="return goodchars(event,'0123456789',this)" autocomplete="off" readonly>
                                                 <small id="telepon_error" class="text-danger"></small>
                                             </div>
-                                            <div class="form-group">
-                                                <label>No. Rekening</label>
-                                                <input type="text" class="form-control" id="no_rekening" name="no_rekening" autocomplete="off" placeholder="Format : Nama Bank - No. Rek (Atas Nama)" readonly>
-                                                <small id="no_rekening_error" class="text-danger"></small>
-                                            </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -152,7 +147,6 @@
                     $('#password').attr('placeholder', 'Kosongkan password jika tidak diubah');
                     $('#alamat').val(data.alamat);
                     $('#telepon').val(data.telepon);
-                    $('#no_rekening').val(data.no_rekening);
                     $('#imagePreview').show();
                     if (data.foto == '') {
                         $('.foto-preview').attr('src', '/images/nasabah/no_image.gif');
@@ -179,7 +173,6 @@
             $('#password').attr('placeholder', 'Kosongkan password jika tidak diubah');
             $('#alamat').removeAttr('readonly');
             $('#telepon').removeAttr('readonly');
-            $('#no_rekening').removeAttr('readonly');
             $('#foto_profil').removeAttr('style');
         });
         // ===============================================================================================
@@ -207,8 +200,6 @@
                         else $('#alamat_error').html('');
                         if (data.nasabah_error['telepon'] != '') $('#telepon_error').html(data.nasabah_error['telepon']);
                         else $('#telepon_error').html('');
-                        if (data.nasabah_error['no_rekening'] != '') $('#no_rekening_error').html(data.nasabah_error['no_rekening']);
-                        else $('#no_rekening_error').html('');
                         if (data.nasabah_error['foto'] != '') $('#foto_error').html(data.nasabah_error['foto']);
                         else $('#foto_error').html('');
                     }
@@ -222,7 +213,6 @@
                         $('#password_error').html('');
                         $('#alamat_error').html('');
                         $('#telepon_error').html('');
-                        $('#no_rekening_error').html('');
                         $('#foto_error').html('');
                         // tampilkan pesan sukses simpan data
                         Toast.fire({
@@ -263,7 +253,6 @@
             $('#password').attr('placeholder', 'Kosongkan password jika tidak diubah');
             $('#alamat').attr('readonly', 'true');
             $('#telepon').attr('readonly', 'true');
-            $('#no_rekening').attr('readonly', 'true');
             $('#foto_profil').attr('style', 'display:none;');
         }
         // ==============================================================================================

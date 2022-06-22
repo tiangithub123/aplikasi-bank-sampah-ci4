@@ -181,7 +181,6 @@ class Profil extends BaseController
         $password     = $this->request->getPost('password');
         $alamat       = $this->request->getPost('alamat');
         $telepon      = $this->request->getPost('telepon');
-        $no_rekening  = $this->request->getPost('no_rekening');
         $foto         = $this->request->getFile('foto');
 
         //data nasabah
@@ -190,7 +189,6 @@ class Profil extends BaseController
             'username'     => $username,
             'alamat'       => $alamat,
             'telepon'      => $telepon,
-            'no_rekening'  => $no_rekening,
             'foto'         => $foto
         ];
 
@@ -211,8 +209,7 @@ class Profil extends BaseController
                     'nama_nasabah' => $nama_nasabah,
                     'username'     => $username,
                     'alamat'       => $alamat,
-                    'telepon'      => $telepon,
-                    'no_rekening'  => $no_rekening
+                    'telepon'      => $telepon
                 ];
                 //Update data nasabah
                 $this->M_nasabah->update($id, $data);
@@ -231,7 +228,6 @@ class Profil extends BaseController
                     'username'     => $username,
                     'alamat'       => $alamat,
                     'telepon'      => $telepon,
-                    'no_rekening'  => $no_rekening,
                     'foto'         => $nama_foto
                 ];
                 // hapus foto lama
@@ -253,8 +249,7 @@ class Profil extends BaseController
                     'username'     => $username,
                     'password'     => password_hash($password, PASSWORD_DEFAULT),
                     'alamat'       => $alamat,
-                    'telepon'      => $telepon,
-                    'no_rekening'  => $no_rekening
+                    'telepon'      => $telepon
                 ];
                 //Update data nasabah
                 $this->M_nasabah->update($id, $data);
@@ -274,7 +269,6 @@ class Profil extends BaseController
                     'password'     => password_hash($password, PASSWORD_DEFAULT),
                     'alamat'       => $alamat,
                     'telepon'      => $telepon,
-                    'no_rekening'  => $no_rekening,
                     'foto'         => $nama_foto
                 ];
                 // hapus foto lama

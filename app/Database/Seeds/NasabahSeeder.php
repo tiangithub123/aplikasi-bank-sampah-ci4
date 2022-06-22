@@ -16,7 +16,6 @@ class NasabahSeeder extends Seeder
                 'password'     => password_hash('nasabah', PASSWORD_DEFAULT),
                 'alamat'       => 'Alamat Nasabah A',
                 'telepon'      => '0123456789',
-                'no_rekening'  => 'BCA - 0123456789 (Nasabah A)',
             ],
         ];
 

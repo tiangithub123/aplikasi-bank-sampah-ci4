@@ -348,4 +348,15 @@ class Validation extends BaseConfig
             ]
         ]
     ];
+
+    // Validasi transaksi setor sampah
+    public $setor_sampah_admin = [
+        'status' => [
+            'label'  => 'Status',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Status tidak boleh kosong!'
+            ]
+        ],
+    ];
 }

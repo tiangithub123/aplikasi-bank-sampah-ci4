@@ -1,4 +1,4 @@
-<?= $this->extend('layout/admin/user_layout') ?>
+<?= $this->extend('layout/admin/admin_layout') ?>
 <?= $this->section('content') ?>
 
 <!-- Content Wrapper. Contains page content -->
@@ -8,13 +8,13 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Transaksi Setor Sampah</h1>
+                    <h1 class="m-0">Data Setor Sampah</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <!-- tombol tambah data -->
-                    <a class="btn btn-primary float-right" id="btnTambah" href="javascript:void(0);" data-toggle="modal" data-target="#modalSetorSampah" role="button">
+                    <!-- <a class="btn btn-primary float-right" id="btnTambah" href="javascript:void(0);" data-toggle="modal" data-target="#modalSetorSampah" role="button">
                         <i class="fas fa-plus"></i> Tambah
-                    </a>
+                    </a> -->
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -34,6 +34,7 @@
                                     <tr>
                                         <th>No.</th>
                                         <th>Tanggal</th>
+                                        <th>Nama Nasabah</th>
                                         <th>Nama Sampah</th>
                                         <th>Jumlah</th>
                                         <th>Satuan</th>
@@ -71,21 +72,20 @@
                 <form id="formSetorSampah" enctype="multipart/form-data">
                     <div class="modal-body">
                         <input type="hidden" name="id_setor" id="id_setor">
-                        <input type="hidden" name="id_nasabah" id="id_nasabah" value="<?= $id; ?>">
+                        <input type="hidden" name="id_nasabah" id="id_nasabah">
+                        <input type="hidden" name="id_sampah" id="id_sampah">
+                        <div class="form-group">
+                            <label>Nama Nasabah</label>
+                            <input type="text" class="form-control" id="nama_nasabah" name="nama_nasabah" autocomplete="off" readonly>
+                        </div>
                         <div class="form-group">
                             <label>Nama Sampah</label>
-                            <select class="form-control chosen-select" name="id_sampah" id="id_sampah">
-                                <option value="" disabled>-- Pilih --</option>
-                                <?php foreach ($sampah as $row) : ?>
-                                    <option value="<?= $row['id']; ?>"><?= $row['nama_sampah']; ?></option>
-                                <?php endforeach ?>
-                            </select>
-                            <small id="id_sampah_error" class="text-danger"></small>
+                            <input type="text" class="form-control" id="nama_sampah" name="nama_sampah" autocomplete="off" readonly>
                         </div>
                         <div class="form-group">
                             <label>Harga</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" id="harga" name="harga" readonly>
+                                <input type="text" class="form-control" id="harga" name="harga" autocomplete="off" readonly>
                                 <div class="input-group-append">
                                     <span class="input-group-text" id="nama_satuan"></span>
                                 </div>
@@ -93,18 +93,24 @@
                         </div>
                         <div class="form-group">
                             <label>Jumlah</label>
-                            <input type="number" class="form-control" id="jumlah" name="jumlah" min="1" autocomplete="off">
-                            <small id="jumlah_error" class="text-danger"></small>
+                            <input type="text" class="form-control" id="jumlah" name="jumlah" autocomplete="off" readonly>
                         </div>
                         <div class="form-group">
                             <label>Total</label>
-                            <input type="number" class="form-control" id="total" name="total" autocomplete="off" readonly>
+                            <input type="text" class="form-control" id="total" name="total" autocomplete="off" readonly>
                             <small id="total_error" class="text-danger"></small>
                         </div>
                         <div class="form-group">
                             <label>Tgl. Penjemputan</label>
-                            <input type="text" class="form-control date-picker" data-date-format="dd-mm-yyyy" id="tgl_penjemputan" name="tgl_penjemputan" value="<?php echo date("d-m-Y"); ?>">
-                            <small id="tgl_penjemputan_error" class="text-danger"></small>
+                            <input type="text" class="form-control" id="tgl_penjemputan" name="tgl_penjemputan" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>Status</label>
+                            <select class="form-control" id="status" name="status" autocomplete="off">
+                                <option value="Menunggu">Menunggu</option>
+                                <option value="Berhasil">Berhasil</option>
+                                <option value="Gagal">Gagal</option>
+                            </select>
                         </div>
                     </div>
                 </form>
@@ -141,7 +147,7 @@
             "serverSide": true,
             "order": [],
             "ajax": {
-                "url": "/SetorSampah/loadDataUser",
+                "url": "/SetorSampah/loadDataAdmin",
                 "type": "POST"
             },
             responsive: {
@@ -181,27 +187,26 @@
                 {
                     "targets": [3],
                     "width": '100px',
-                    "className": 'text-center',
-                    "render": function(data, type, row) {
-                        var btn = data + " " + row[4];
-                        return btn;
-                    }
                 },
                 {
                     "targets": [4],
                     "width": '100px',
-                    "visible": false,
+                    "className": 'text-center',
+                    "render": function(data, type, row) {
+                        var btn = data + " " + row[5];
+                        return btn;
+                    }
                 },
                 {
                     "targets": [5],
                     "width": '100px',
-                    "className": 'text-right',
-                    render: $.fn.DataTable.render.number('.', ',', 0, 'Rp. '),
+                    "visible": false,
                 },
                 {
                     "targets": [6],
                     "width": '100px',
-                    "className": 'text-center',
+                    "className": 'text-right',
+                    render: $.fn.DataTable.render.number('.', ',', 0, 'Rp. '),
                 },
                 {
                     "targets": [7],
@@ -209,8 +214,13 @@
                     "className": 'text-center',
                 },
                 {
-                    "responsivePriority": 2,
                     "targets": [8],
+                    "width": '100px',
+                    "className": 'text-center',
+                },
+                {
+                    "responsivePriority": 2,
+                    "targets": [9],
                     "orderable": false,
                     "width": '80px',
                     "className": 'text-center',
@@ -219,45 +229,44 @@
         });
 
         // ============================================ Form =============================================
-        // Tampilkan Modal Form Input Data
-        $('#btnTambah').click(function() {
-            // reset form
-            $('#formSetorSampah')[0].reset();
-            $('#id_sampah').val('').trigger('chosen:updated');
+        // Tampilkan Modal Form Edit Data
+        $('body').on('click', '.btnEdit', function() {
             // judul form
-            $('#modalLabel').text('Input Data Setor Sampah');
-        });
-
-        // Tampilkan data
-        $('#id_sampah').change(function() {
-            // tampilkan berdasarkan id_sampah
-            const id_sampah = $('#id_sampah').val();;
+            $('#modalLabel').text('Edit Data Setor Sampah');
+            // ambil data dari datatables
+            var data = table.row($(this).parents('tr')).data();
+            // membuat variabel untuk menampung data
+            var tgl_penjemputan = data[7];
+            // tampilkan berdasarkan id_setor
+            const id_setor = $(this).attr('value');
             $.ajax({
-                url: "/SetorSampah/show_sampah/" + id_sampah,
+                url: "/SetorSampah/show_transaksi/" + id_setor,
                 type: "GET",
                 dataType: "JSON",
                 success: function(data) {
+                    $('#id_setor').val(data.id);
+                    $('#id_nasabah').val(data.id_nasabah);
+                    $('#id_sampah').val(data.id_sampah);
+                    $('#nama_nasabah').val(data.nama_nasabah);
+                    $('#nama_sampah').val(data.nama_sampah);
                     $('#harga').val(convertToRupiah(data.harga));
                     $('#nama_satuan').text('/' + data.nama_satuan);
+                    $('#jumlah').val(data.jumlah);
+                    $('#total').val(convertToRupiah(data.total));
+                    $('#tgl_penjemputan').val(tgl_penjemputan);
+                    $('#status').val(data.status);
+                    $('#modalSetorSampah').modal('show');
                 }
             })
-        });
-
-        // hitung total
-        $('#jumlah').on('change keyup', function() {
-            var harga = convertToAngka($('#harga').val());
-            var jumlah = $('#jumlah').val();
-            var total = jumlah * harga;
-            $('#total').val(convertToRupiah(total));
         });
 
         // simpan data ke database
         $('#btnSimpan').on('click', function() {
             // jika form input data sampah yang ditampilkan, jalankan perintah simpan
-            if ($('#modalLabel').text() == "Input Data Setor Sampah") {
+            if ($('#modalLabel').text() == "Edit Data Setor Sampah") {
                 var data = new FormData($("#formSetorSampah")[0]);
                 $.ajax({
-                    url: "/SetorSampah/save",
+                    url: "/SetorSampah/update",
                     method: "POST",
                     data: data,
                     contentType: false,
@@ -267,77 +276,22 @@
                     success: function(data) {
                         //Data error 
                         if (data.error) {
-                            if (data.setor_sampah_error['id_sampah'] != '') $('#id_sampah_error').html(data.setor_sampah_error['id_sampah']);
-                            else $('#id_sampah_error').html('');
-                            if (data.setor_sampah_error['jumlah'] != '') $('#jumlah_error').html(data.setor_sampah_error['jumlah']);
-                            else $('#jumlah_error').html('');
-                            if (data.setor_sampah_error['total'] != '') $('#total_error').html(data.setor_sampah_error['total']);
-                            else $('#total_error').html('');
-                            if (data.setor_sampah_error['tgl_penjemputan'] != '') $('#tgl_penjemputan_error').html(data.setor_sampah_error['tgl_penjemputan']);
-                            else $('#tgl_penjemputan_error').html('');
+                            if (data.setor_sampah_error['status'] != '') $('#status_error').html(data.setor_sampah_error['status']);
+                            else $('#status_error').html('');
                         }
                         //Data sampah berhasil disimpan
                         if (data.success) {
                             // reset form
                             $('#formSetorSampah')[0].reset();
                             $('#modalSetorSampah').modal('hide');
-                            $('#id_sampah_error').html('');
-                            $('#jumlah_error').html('');
-                            $('#total_error').html('');
-                            $('#tgl_penjemputan_error').html('');
+                            $('#status_error').html('');
                             $('#tabel-setor-sampah').DataTable().ajax.reload();
                             // tampilkan pesan sukses simpan data
                             Toast.fire({
                                 icon: 'success',
-                                title: 'Transaksi Setor Sampah berhasil disimpan.'
+                                title: 'Data Setor Sampah berhasil diupdate.'
                             })
                         }
-                    }
-                });
-            }
-        });
-
-        // Hapus data sampah
-        $('body').on('click', '.btnHapus', function(e) {
-            e.preventDefault();
-            // ambil data dari datatables
-            var data = table.row($(this).parents('tr')).data();
-            // membuat variabel untuk menampung data
-            var status = data[7];
-            // jika status tid
-            if (status != 'Menunggu') {
-                // tampilkan pesan gagal hapus data
-                Toast.fire({
-                    icon: 'error',
-                    title: 'Data Transaksi tidak bisa dihapus.'
-                })
-            } else {
-                const url = $(this).attr('href');
-                Swal.fire({
-                    title: 'Hapus Data?',
-                    text: "Anda ingin menghapus data transaksi ini?",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Ya, Hapus',
-                    cancelButtonText: 'Batalkan'
-                }).then((result) => {
-                    if (result.value) {
-                        $.ajax({
-                            url: url,
-                            method: "POST",
-                            success: function(response) {
-                                $('#tabel-setor-sampah').DataTable().ajax.reload()
-                                // tutup sweet alert
-                                swal.close();
-                                // tampilkan pesan sukses hapus data
-                                Toast.fire({
-                                    icon: 'success',
-                                    title: 'Transaksi Setor Sampah berhasil dihapus.'
-                                })
-                            }
-                        });
                     }
                 });
             }

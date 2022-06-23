@@ -75,7 +75,7 @@
                         <div class="form-group">
                             <label>Nama Sampah</label>
                             <select class="form-control chosen-select" name="id_sampah" id="id_sampah">
-                                <option value="">-- Pilih --</option>
+                                <option value="" disabled>-- Pilih --</option>
                                 <?php foreach ($sampah as $row) : ?>
                                     <option value="<?= $row['id']; ?>"><?= $row['nama_sampah']; ?></option>
                                 <?php endforeach ?>
@@ -84,11 +84,16 @@
                         </div>
                         <div class="form-group">
                             <label>Harga</label>
-                            <input type="text" class="form-control" id="harga" name="harga" readonly>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="harga" name="harga" readonly>
+                                <div class="input-group-append">
+                                    <span class="input-group-text" id="nama_satuan"></span>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label>Jumlah</label>
-                            <input type="number" class="form-control" id="jumlah" name="jumlah" autocomplete="off">
+                            <input type="number" class="form-control" id="jumlah" name="jumlah" min="1" autocomplete="off">
                             <small id="jumlah_error" class="text-danger"></small>
                         </div>
                         <div class="form-group">
@@ -223,6 +228,29 @@
             $('#modalLabel').text('Input Data Setor Sampah');
         });
 
+        // Tampilkan data
+        $('#id_sampah').change(function() {
+            // tampilkan berdasarkan id_sampah
+            const id_sampah = $('#id_sampah').val();;
+            $.ajax({
+                url: "/SetorSampah/show/" + id_sampah,
+                type: "GET",
+                dataType: "JSON",
+                success: function(data) {
+                    $('#harga').val(convertToRupiah(data.harga));
+                    $('#nama_satuan').text('/' + data.nama_satuan);
+                }
+            })
+        });
+
+        // hitung total
+        $('#jumlah').on('change keyup', function() {
+            var harga = convertToAngka($('#harga').val());
+            var jumlah = $('#jumlah').val();
+            var total = jumlah * harga;
+            $('#total').val(convertToRupiah(total));
+        });
+
         // simpan data ke database
         $('#btnSimpan').on('click', function() {
             // jika form input data sampah yang ditampilkan, jalankan perintah simpan
@@ -272,35 +300,47 @@
         // Hapus data sampah
         $('body').on('click', '.btnHapus', function(e) {
             e.preventDefault();
-            const url = $(this).attr('href');
-
-            Swal.fire({
-                title: 'Hapus Data?',
-                text: "Anda ingin menghapus data sampah ini?",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Ya, Hapus',
-                cancelButtonText: 'Batalkan'
-            }).then((result) => {
-                if (result.value) {
-                    $.ajax({
-                        url: url,
-                        method: "POST",
-                        success: function(response) {
-                            $('#tabel-setor-sampah').DataTable().ajax.reload()
-                            // tutup sweet alert
-                            swal.close();
-                            // tampilkan pesan sukses hapus data
-                            Toast.fire({
-                                icon: 'success',
-                                title: 'Transaksi Setor Sampah berhasil dihapus.'
-                            })
-                        }
-                    });
-                }
-            });
+            // ambil data dari datatables
+            var data = table.row($(this).parents('tr')).data();
+            // membuat variabel untuk menampung data
+            var status = data[7];
+            // jika status tid
+            if (status != 'Menunggu') {
+                // tampilkan pesan gagal hapus data
+                Toast.fire({
+                    icon: 'error',
+                    title: 'Data Transaksi tidak bisa dihapus.'
+                })
+            } else {
+                const url = $(this).attr('href');
+                Swal.fire({
+                    title: 'Hapus Data?',
+                    text: "Anda ingin menghapus data transaksi ini?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya, Hapus',
+                    cancelButtonText: 'Batalkan'
+                }).then((result) => {
+                    if (result.value) {
+                        $.ajax({
+                            url: url,
+                            method: "POST",
+                            success: function(response) {
+                                $('#tabel-setor-sampah').DataTable().ajax.reload()
+                                // tutup sweet alert
+                                swal.close();
+                                // tampilkan pesan sukses hapus data
+                                Toast.fire({
+                                    icon: 'success',
+                                    title: 'Transaksi Setor Sampah berhasil dihapus.'
+                                })
+                            }
+                        });
+                    }
+                });
+            }
         });
         // ===================================================================
     });

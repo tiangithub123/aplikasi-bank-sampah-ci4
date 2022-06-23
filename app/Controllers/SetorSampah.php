@@ -9,7 +9,7 @@ use Config\Services;
 
 class SetorSampah extends BaseController
 {
-    protected $M_setor_sampah;
+    protected $M_setor_sampah_user;
     protected $M_sampah;
     protected $request;
     protected $form_validation;
@@ -17,11 +17,11 @@ class SetorSampah extends BaseController
 
     public function __construct()
     {
-        $this->request         = Services::request();
-        $this->M_setor_sampah  = new USetorSampahModel($this->request);
-        $this->M_sampah        = new SampahModel($this->request);
-        $this->form_validation = \Config\Services::validation();
-        $this->session         = \Config\Services::session();
+        $this->request             = Services::request();
+        $this->M_setor_sampah_user = new USetorSampahModel($this->request);
+        $this->M_sampah            = new SampahModel($this->request);
+        $this->form_validation     = \Config\Services::validation();
+        $this->session             = \Config\Services::session();
     }
 
     public function index_user()
@@ -46,6 +46,20 @@ class SetorSampah extends BaseController
                 </a>
                 ";
         return $link;
+    }
+
+    // Tampilkan data
+    public function show($id_sampah)
+    {
+        $db      = \Config\Database::connect();
+        $builder = $db->table('sampah a');
+        $builder->select('a.harga, b.nama_satuan');
+        $builder->join('satuan b', 'a.id_satuan = b.id', 'left');
+        $builder->where('a.id', $id_sampah);
+        $data = $builder->get();
+        foreach ($data->getResult() as $row) {
+            echo json_encode($row);
+        }
     }
 
     // Simpan data sampah
@@ -85,7 +99,7 @@ class SetorSampah extends BaseController
                 'tgl_penjemputan' => $tgl_penjemputan,
             ];
             //Simpan data sampah
-            $this->M_setor_sampah->save($data);
+            $this->M_setor_sampah_user->save($data);
 
             $validasi = [
                 'success'   => true
@@ -97,14 +111,14 @@ class SetorSampah extends BaseController
     // Hapus data sampah
     public function delete($id_setor)
     {
-        $this->M_setor_sampah->delete($id_setor);
+        $this->M_setor_sampah_user->delete($id_setor);
     }
 
     // tampilkan data sampah
     public function loadDataUser()
     {
         if ($this->request->getMethod(true) == 'POST') {
-            $lists = $this->M_setor_sampah->get_datatables();
+            $lists = $this->M_setor_sampah_user->get_datatables();
             $data = [];
             $no = $this->request->getPost("start");
             foreach ($lists as $list) {
@@ -123,8 +137,8 @@ class SetorSampah extends BaseController
             }
             $output = [
                 "draw"            => $this->request->getPost('draw'),
-                "recordsTotal"    => $this->M_setor_sampah->count_all(),
-                "recordsFiltered" => $this->M_setor_sampah->count_filtered(),
+                "recordsTotal"    => $this->M_setor_sampah_user->count_all(),
+                "recordsFiltered" => $this->M_setor_sampah_user->count_filtered(),
                 "data"            => $data
             ];
             echo json_encode($output);

@@ -16,6 +16,12 @@ class UserSeeder extends Seeder
                 'password'  => password_hash('admin', PASSWORD_DEFAULT),
                 'level'     => 'Admin',
             ],
+            [
+                'nama_user' => 'Staff',
+                'username'  => 'staff',
+                'password'  => password_hash('staff', PASSWORD_DEFAULT),
+                'level'     => 'Staff',
+            ],
         ];
 
         foreach ($user_data as $data) {

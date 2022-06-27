@@ -12,12 +12,11 @@
         <nav id="navbar" class="navbar">
             <ul>
                 <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-                <li><a class="nav-link scrollto" href="#about">About</a></li>
-                <li><a class="nav-link scrollto" href="#services">Services</a></li>
-                <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>
-                <li><a class="nav-link scrollto" href="#team">Team</a></li>
-                <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-                <li><a class="getstarted scrollto" href="user/register" target="_blank">Register</a></li>
+                <li><a class="nav-link scrollto" href="#about">Tentang</a></li>
+                <li><a class="nav-link scrollto" href="#features">Visi & Misi</a></li>
+                <li><a class="nav-link scrollto" href="#faq">Pertanyaan</a></li>
+                <li><a class="nav-link scrollto" href="#contact">Kontak Kami</a></li>
+                <li><a class="getstarted scrollto" href="/user" target="_blank">Login</a></li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
@@ -31,14 +30,14 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 d-flex flex-column justify-content-center">
-                <h1 data-aos="fade-up">Jadikan sampahmu menjadi uang.</h1>
-                <h2 data-aos="fade-up" data-aos-delay="400">We are team of talented designers making websites with
-                    Bootstrap
+                <h1 data-aos="fade-up">Jagalah Kebersihan!</h1>
+                <h2 data-aos="fade-up" data-aos-delay="400">
+                    Kirim Limbah/Sampah yang ada dirumbah, kami tukar dengan uang.
                 </h2>
                 <div data-aos="fade-up" data-aos-delay="600">
                     <div class="text-center text-lg-start">
-                        <a href="#about" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
-                            <span>Get Started</span>
+                        <a href="user/register" target="_blank" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
+                            <span>Daftar Sekarang</span>
                             <i class="bi bi-arrow-right"></i>
                         </a>
                     </div>
@@ -66,21 +65,10 @@
                 <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
                     <div class="content">
                         <h3>Tentang Kami</h3>
-                        <h2>Expedita voluptas omnis cupiditate totam eveniet nobis sint iste. Dolores est repellat
-                            corrupti
-                            reprehenderit.</h2>
+                        <h2>Deskripsi singkat tentang kami</h2>
                         <p>
-                            Quisquam vel ut sint cum eos hic dolores aperiam. Sed deserunt et. Inventore et et dolor
-                            consequatur
-                            itaque ut voluptate sed et. Magnam nam ipsum tenetur suscipit voluptatum nam et est
-                            corrupti.
+                            Waste4future merupakan perusahaan yang menyediakan solusi pengolahan sampah dengan melakukan penyaluran limbah ke perusahaan pengolah limbah untuk mengurangi limbah yang ada dimasyarakat dan juga menjaga kelestarian lingkungan di Indonesia.
                         </p>
-                        <div class="text-center text-lg-start">
-                            <a href="#" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
-                                <span>Read More</span>
-                                <i class="bi bi-arrow-right"></i>
-                            </a>
-                        </div>
                     </div>
                 </div>
 
@@ -99,8 +87,8 @@
         <div class="container" data-aos="fade-up">
 
             <header class="section-header">
-                <h2>Features</h2>
-                <p>Laboriosam et omnis fuga quis dolor direda fara</p>
+                <h2>Visi & Misi</h2>
+                <p>Berikut Visi dan Misi kami</p>
             </header>
 
             <!-- Feature Tabs -->
@@ -109,10 +97,10 @@
                     <!-- Tabs -->
                     <ul class="nav nav-pills mb-3">
                         <li>
-                            <a class="nav-link active" data-bs-toggle="pill" href="#tab1">Saepe fuga</a>
+                            <a class="nav-link active" data-bs-toggle="pill" href="#tab1">Visi</a>
                         </li>
                         <li>
-                            <a class="nav-link" data-bs-toggle="pill" href="#tab2">Voluptates</a>
+                            <a class="nav-link" data-bs-toggle="pill" href="#tab2">Misi</a>
                         </li>
                     </ul><!-- End Tabs -->
 
@@ -120,47 +108,25 @@
                     <div class="tab-content">
 
                         <div class="tab-pane fade show active" id="tab1">
-                            <p>Consequuntur inventore voluptates consequatur aut vel et. Eos doloribus expedita.
-                                Sapiente atque
-                                consequatur minima nihil quae aspernatur quo suscipit voluptatem.</p>
                             <div class="d-flex align-items-center mb-2">
                                 <i class="bi bi-check2"></i>
-                                <h4>Repudiandae rerum velit modi et officia quasi facilis</h4>
+                                <h4>Berkontribusi Dalam Mengurangi Limbah Yang Masih Dapat Didaur Ulang Sehingga Dapat Menjaga Kelestarian Lingkungan</h4>
                             </div>
-                            <p>Laborum omnis voluptates voluptas qui sit aliquam blanditiis. Sapiente minima commodi
-                                dolorum non
-                                eveniet magni quaerat nemo et.</p>
-                            <div class="d-flex align-items-center mb-2">
-                                <i class="bi bi-check2"></i>
-                                <h4>Incidunt non veritatis illum ea ut nisi</h4>
-                            </div>
-                            <p>Non quod totam minus repellendus autem sint velit. Rerum debitis facere soluta
-                                tenetur. Iure
-                                molestiae assumenda sunt qui inventore eligendi voluptates nisi at. Dolorem quo
-                                tempora. Quia et
-                                perferendis.</p>
                         </div><!-- End Tab 1 Content -->
 
                         <div class="tab-pane fade show" id="tab2">
-                            <p>Consequuntur inventore voluptates consequatur aut vel et. Eos doloribus expedita.
-                                Sapiente atque
-                                consequatur minima nihil quae aspernatur quo suscipit voluptatem.</p>
                             <div class="d-flex align-items-center mb-2">
                                 <i class="bi bi-check2"></i>
-                                <h4>Repudiandae rerum velit modi et officia quasi facilis</h4>
+                                <h4>Berkontribusi Signifikan Dalam Mengurangi Polusi Limbah Nasional Dan Menciptakan Lingkungan Hidup Yang Ideal Dan Berkelanjutan</h4>
                             </div>
-                            <p>Laborum omnis voluptates voluptas qui sit aliquam blanditiis. Sapiente minima commodi
-                                dolorum non
-                                eveniet magni quaerat nemo et.</p>
                             <div class="d-flex align-items-center mb-2">
                                 <i class="bi bi-check2"></i>
-                                <h4>Incidunt non veritatis illum ea ut nisi</h4>
+                                <h4>Meningkatkan Tingkat Daur Ulang Sampah Organik Dan Anorganik Di Indonesia</h4>
                             </div>
-                            <p>Non quod totam minus repellendus autem sint velit. Rerum debitis facere soluta
-                                tenetur. Iure
-                                molestiae assumenda sunt qui inventore eligendi voluptates nisi at. Dolorem quo
-                                tempora. Quia et
-                                perferendis.</p>
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="bi bi-check2"></i>
+                                <h4>Membantu Menyalurkan Limbah Yang Dapat Didaur Ulang Kepada Perusahaan Pengolah Limbah</h4>
+                            </div>
                         </div><!-- End Tab 2 Content -->
 
                     </div>
@@ -318,80 +284,45 @@
         <div class="container" data-aos="fade-up">
 
             <header class="section-header">
-                <h2>Contact</h2>
-                <p>Contact Us</p>
+                <h2>Kontak</h2>
+                <p>Hubungi Kami</p>
             </header>
 
             <div class="row gy-4">
 
-                <div class="col-lg-6">
+                <div class="col-lg-12">
 
                     <div class="row gy-4">
                         <div class="col-md-6">
                             <div class="info-box">
                                 <i class="bi bi-geo-alt"></i>
-                                <h3>Address</h3>
-                                <p>A108 Adam Street,<br>New York, NY 535022</p>
+                                <h3>Alamat</h3>
+                                <p>Jl. Benda No.25 KM 12.5 Pangkalan 2,<br>Banter Gebang Bekasi Jawa barat</p>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="info-box">
                                 <i class="bi bi-telephone"></i>
-                                <h3>Call Us</h3>
-                                <p>+1 5589 55488 55<br>+1 6678 254445 41</p>
+                                <h3>Telepon</h3>
+                                <p>+6285123456789<br>+6285123456789</p>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="info-box">
                                 <i class="bi bi-envelope"></i>
-                                <h3>Email Us</h3>
-                                <p>info@example.com<br>contact@example.com</p>
+                                <h3>Email</h3>
+                                <p>waste4future@gmail.com <br> waste4future@gmail.com</p>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="info-box">
                                 <i class="bi bi-clock"></i>
-                                <h3>Open Hours</h3>
-                                <p>Monday - Friday<br>9:00AM - 05:00PM</p>
+                                <h3>Jam Buka</h3>
+                                <p>Senin - Jumlah<br>08.00 - 16.00</p>
                             </div>
                         </div>
                     </div>
-
                 </div>
-
-                <div class="col-lg-6">
-                    <form action="forms/contact.php" method="post" class="php-email-form">
-                        <div class="row gy-4">
-
-                            <div class="col-md-6">
-                                <input type="text" name="name" class="form-control" placeholder="Your Name" required>
-                            </div>
-
-                            <div class="col-md-6 ">
-                                <input type="email" class="form-control" name="email" placeholder="Your Email" required>
-                            </div>
-
-                            <div class="col-md-12">
-                                <input type="text" class="form-control" name="subject" placeholder="Subject" required>
-                            </div>
-
-                            <div class="col-md-12">
-                                <textarea class="form-control" name="message" rows="6" placeholder="Message" required></textarea>
-                            </div>
-
-                            <div class="col-md-12 text-center">
-                                <div class="loading">Loading</div>
-                                <div class="error-message"></div>
-                                <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                                <button type="submit">Send Message</button>
-                            </div>
-
-                        </div>
-                    </form>
-
-                </div>
-
             </div>
 
         </div>

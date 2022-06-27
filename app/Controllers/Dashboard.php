@@ -33,7 +33,9 @@ class Dashboard extends BaseController
         $data['title']        = "Dashboard | Aplikasi Bank Sampah";
         $data['menu']         = "";
         $data['page']         = "dashboard";
+        $data['id']           = $this->session->get('id');
         $data['nama_nasabah'] = $this->session->get('nama_nasabah');
+        $data['saldo']        = $this->session->get('saldo');
         $data['foto']         = $this->session->get('foto');
         return view('dashboard/index_user', $data);
     }

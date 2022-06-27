@@ -45,6 +45,7 @@ class Profil extends BaseController
         $data['page']         = "profil";
         $data['id']           = $this->session->get('id');
         $data['nama_nasabah'] = $this->session->get('nama_nasabah');
+        $data['saldo']        = $this->session->get('saldo');
         $data['foto']         = $this->session->get('foto');
         return view('profil/index_user', $data);
     }

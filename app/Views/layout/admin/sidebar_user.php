@@ -38,7 +38,13 @@
                 <li class="nav-item">
                     <a href="<?php echo base_url('user/transaksi-setor-sampah'); ?>" class="nav-link <?php if ($page == 'transaksi-setor-sampah') echo " active";  ?>">
                         <i class="nav-icon fas fa-trash-alt"></i>
-                        <p>Transaksi Setor Sampah</p>
+                        <p>Setor Sampah</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?php echo base_url('user/transaksi-penarikan'); ?>" class="nav-link <?php if ($page == 'transaksi-penarikan') echo " active";  ?>">
+                        <i class="nav-icon fas fa-hand-holding-usd"></i>
+                        <p>Penarikan Saldo</p>
                     </a>
                 </li>
                 <li class="nav-item">

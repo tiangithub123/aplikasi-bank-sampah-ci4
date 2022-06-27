@@ -39,6 +39,7 @@ $routes->get('/', 'Home::index');
 $routes->group('admin', function ($routes) {
     $routes->get('/', 'Login::index');
     $routes->get('dashboard', 'Dashboard::index', ['filter' => 'authadmin']);
+    $routes->get('transaksi-penarikan', 'Penarikan::index_admin', ['filter' => 'authadmin']);
     $routes->get('setor-sampah', 'SetorSampah::index', ['filter' => 'authadmin']);
     $routes->get('sampah', 'Sampah::index', ['filter' => 'authadmin']);
     $routes->get('jenis', 'Jenis::index', ['filter' => 'authadmin']);
@@ -53,6 +54,7 @@ $routes->group('user', function ($routes) {
     $routes->get('register', 'Login::register_user');
     $routes->get('dashboard', 'Dashboard::index_user', ['filter' => 'authuser']);
     $routes->get('transaksi-setor-sampah', 'SetorSampah::index_user', ['filter' => 'authuser']);
+    $routes->get('transaksi-penarikan', 'Penarikan::index_user', ['filter' => 'authuser']);
     $routes->get('profil', 'Profil::index_user', ['filter' => 'authuser']);
     $routes->get('logout', 'Dashboard::logout_user', ['filter' => 'authuser']);
 });

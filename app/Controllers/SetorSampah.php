@@ -50,7 +50,7 @@ class SetorSampah extends BaseController
         $data['sampah']       = $this->M_sampah->findAll();
         $data['id']           = $this->session->get('id');
         $data['nama_nasabah'] = $this->session->get('nama_nasabah');
-        $data['level']        = $this->session->get('level');
+        $data['saldo']        = $this->session->get('saldo');
         $data['foto']         = $this->session->get('foto');
         return view('setor-sampah/index_user', $data);
     }

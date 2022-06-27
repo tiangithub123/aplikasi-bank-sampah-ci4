@@ -37,6 +37,12 @@
                             <p>Dashboard</p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="<?php echo base_url('admin/transaksi-penarikan'); ?>" class="nav-link <?php if ($page == 'transaksi-penarikan') echo " active";  ?>">
+                            <i class="nav-icon fas fa-hand-holding-usd"></i>
+                            <p>Transaksi Penarikan</p>
+                        </a>
+                    </li>
                     <li class="nav-item <?php if ($menu == 'data_sampah') echo " menu-open";  ?>">
                         <a href="#" class="nav-link <?php if ($menu == 'data_sampah') echo " active";  ?>">
                             <i class="nav-icon fas fa-trash-alt"></i>

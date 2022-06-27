@@ -217,6 +217,19 @@
                     "targets": [8],
                     "width": '100px',
                     "className": 'text-center',
+                    "render": function(data, type, row) {
+                        switch (data) {
+                            case 'Menunggu':
+                                return '<span class="badge bg-warning">' + data + '</span>';
+                                break;
+                            case 'Berhasil':
+                                return '<span class="badge bg-success">' + data + '</span>';
+                                break;
+                            case 'Gagal':
+                                return '<span class="badge bg-danger">' + data + '</span>';
+                                break;
+                        }
+                    }
                 },
                 {
                     "responsivePriority": 2,

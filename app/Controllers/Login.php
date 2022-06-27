@@ -195,6 +195,7 @@ class Login extends BaseController
                         'id'           => $cekUser['id'],
                         'nama_nasabah' => $cekUser['nama_nasabah'],
                         'username'     => $cekUser['username'],
+                        'saldo'        => $cekUser['saldo'],
                         'foto'         => $cekUser['foto'],
                         'logged_in'    => TRUE
                     ];

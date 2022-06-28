@@ -9,9 +9,9 @@ class PenarikanUserModel extends Model
 {
     protected $table = "penarikan";
     protected $primaryKey = 'id';
-    protected $allowedFields = ['tanggal', 'id_nasabah', 'jenis', 'jumlah', 'keterangan', 'tgl_verifikasi', 'status'];
-    protected $column_order = [null,'tanggal', 'id_nasabah', 'jenis', 'jumlah', 'keterangan', 'tgl_verifikasi', 'status', null];
-    protected $column_search = ['tanggal', 'id_nasabah', 'jenis', 'jumlah', 'keterangan', 'tgl_verifikasi', 'status'];
+    protected $allowedFields = ['tanggal', 'id_nasabah', 'jumlah', 'tgl_verifikasi', 'status'];
+    protected $column_order = [null,'tanggal', 'id_nasabah', 'jumlah', 'tgl_verifikasi', 'status', null];
+    protected $column_search = ['tanggal', 'id_nasabah', 'jumlah', 'tgl_verifikasi', 'status'];
     protected $order = ['id' => 'desc'];
     protected $request;
     protected $db;
@@ -27,7 +27,7 @@ class PenarikanUserModel extends Model
         $id_nasabah    = $this->session->get('id');
 
         $this->dt      = $this->db->table($this->table);
-        $this->dt      = $this->db->table($this->table)->select('penarikan.id, tanggal, nasabah.nama_nasabah, jenis, jumlah, keterangan, tgl_verifikasi, status')
+        $this->dt      = $this->db->table($this->table)->select('penarikan.id, tanggal, nasabah.nama_nasabah, nasabah.nama_bank, nasabah.no_rek, jumlah, tgl_verifikasi, status')
             ->join('nasabah', 'nasabah.id = penarikan.id_nasabah', 'left')
             ->where('id_nasabah', $id_nasabah);
     }

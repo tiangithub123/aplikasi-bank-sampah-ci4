@@ -22,15 +22,8 @@ class Penarikan extends Migration
                 'constraint' => 5,
                 'unsigned'   => true,
             ],
-            'jenis'      => [
-                'type'       => 'ENUM',
-                'constraint' => ['Transfer', 'Top Up'],
-            ],
             'jumlah'      => [
                 'type' => 'INT',
-            ],
-            'keterangan'      => [
-                'type' => 'TEXT',
             ],
             'tgl_verifikasi'      => [
                 'type'       => 'VARCHAR',

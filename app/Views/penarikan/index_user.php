@@ -34,8 +34,8 @@
                                     <tr>
                                         <th>No.</th>
                                         <th>Tanggal</th>
-                                        <th>Jenis</th>
-                                        <th>Keterangan</th>
+                                        <th>Nama Bank</th>
+                                        <th>No. Rekening</th>
                                         <th>Jumlah</th>
                                         <th>Tgl. Verikasi</th>
                                         <th>Status</th>
@@ -81,18 +81,12 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Jenis</label>
-                            <select class="form-control" id="jenis" name="jenis" autocomplete="off">
-                                <option value="">-- Pilih --</option>
-                                <option value="Transfer">Transfer</option>
-                                <option value="Top Up">Top Up</option>
-                            </select>
-                            <small id="jenis_error" class="text-danger"></small>
+                            <label>Nama Bank</label>
+                            <input class="form-control" type="text" name="nama_bank" id="nama_bank" value="<?= $nama_bank; ?>" autocomplete="off" readonly>
                         </div>
                         <div class="form-group">
-                            <label>Keterangan</label>
-                            <textarea class="form-control" name="keterangan" id="keterangan" rows="3"></textarea>
-                            <small id="keterangan_error" class="text-danger"></small>
+                            <label>No. Rekening</label>
+                            <input class="form-control" type="text" name="no_rek" id="no_rek" value="<?= $no_rek; ?>" autocomplete="off" readonly>
                         </div>
                         <div class="form-group">
                             <label>Jumlah</label>
@@ -186,6 +180,7 @@
                 {
                     "targets": [3],
                     "width": '200px',
+                    "className": 'text-center',
                 },
                 {
                     "targets": [4],
@@ -251,11 +246,19 @@
             if ($('#modalLabel').text() == "Input Penarikan") {
                 var saldo = convertToAngka($('#saldo').val());
                 var jumlah = convertToAngka($('#jumlah').val());
+                var nama_bank = "<?= $nama_bank ?>";
+                var no_rek = "<?= $no_rek ?>";
 
                 if (eval(jumlah) > eval(saldo)) {
                     Toast.fire({
                         icon: 'error',
                         title: 'Jumlah tidak boleh melebihi sisa saldo'
+                    })
+                } else if (nama_bank == '' && no_rek == '') {
+                    // tampilkan pesan gagal hapus data
+                    Toast.fire({
+                        icon: 'warning',
+                        title: 'Lengkapi data Anda di pengaturan profil dulu.'
                     })
                 } else {
                     var data = new FormData($("#formPenarikan")[0]);

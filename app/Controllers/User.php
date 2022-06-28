@@ -27,6 +27,7 @@ class User extends BaseController
         $data['menu']      = "";
         $data['page']      = "user";
         $data['nama_user'] = $this->session->get('nama_user');
+        $data['level']     = $this->session->get('level');
         $data['foto']      = $this->session->get('foto');
         return view('user/index', $data);
     }

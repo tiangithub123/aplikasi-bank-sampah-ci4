@@ -268,45 +268,56 @@
         $('#btnSimpan').on('click', function() {
             // jika form input data sampah yang ditampilkan, jalankan perintah simpan
             if ($('#modalLabel').text() == "Input Data Setor Sampah") {
-                var data = new FormData($("#formSetorSampah")[0]);
-                $.ajax({
-                    url: "/SetorSampah/save",
-                    method: "POST",
-                    data: data,
-                    contentType: false,
-                    cache: false,
-                    processData: false,
-                    dataType: "JSON",
-                    success: function(data) {
-                        //Data error 
-                        if (data.error) {
-                            if (data.setor_sampah_error['id_sampah'] != '') $('#id_sampah_error').html(data.setor_sampah_error['id_sampah']);
-                            else $('#id_sampah_error').html('');
-                            if (data.setor_sampah_error['jumlah'] != '') $('#jumlah_error').html(data.setor_sampah_error['jumlah']);
-                            else $('#jumlah_error').html('');
-                            if (data.setor_sampah_error['total'] != '') $('#total_error').html(data.setor_sampah_error['total']);
-                            else $('#total_error').html('');
-                            if (data.setor_sampah_error['tgl_penjemputan'] != '') $('#tgl_penjemputan_error').html(data.setor_sampah_error['tgl_penjemputan']);
-                            else $('#tgl_penjemputan_error').html('');
+                // jika alamat, no. telepon kosong
+                var alamat = "<?= $alamat ?>";
+                var telepon = "<?= $telepon ?>";
+                if (alamat == '' && telepon == '') {
+                    // tampilkan pesan gagal hapus data
+                    Toast.fire({
+                        icon: 'warning',
+                        title: 'Lengkapi data Anda di pengaturan profil dulu.'
+                    })
+                } else {
+                    var data = new FormData($("#formSetorSampah")[0]);
+                    $.ajax({
+                        url: "/SetorSampah/save",
+                        method: "POST",
+                        data: data,
+                        contentType: false,
+                        cache: false,
+                        processData: false,
+                        dataType: "JSON",
+                        success: function(data) {
+                            //Data error 
+                            if (data.error) {
+                                if (data.setor_sampah_error['id_sampah'] != '') $('#id_sampah_error').html(data.setor_sampah_error['id_sampah']);
+                                else $('#id_sampah_error').html('');
+                                if (data.setor_sampah_error['jumlah'] != '') $('#jumlah_error').html(data.setor_sampah_error['jumlah']);
+                                else $('#jumlah_error').html('');
+                                if (data.setor_sampah_error['total'] != '') $('#total_error').html(data.setor_sampah_error['total']);
+                                else $('#total_error').html('');
+                                if (data.setor_sampah_error['tgl_penjemputan'] != '') $('#tgl_penjemputan_error').html(data.setor_sampah_error['tgl_penjemputan']);
+                                else $('#tgl_penjemputan_error').html('');
+                            }
+                            //Data sampah berhasil disimpan
+                            if (data.success) {
+                                // reset form
+                                $('#formSetorSampah')[0].reset();
+                                $('#modalSetorSampah').modal('hide');
+                                $('#id_sampah_error').html('');
+                                $('#jumlah_error').html('');
+                                $('#total_error').html('');
+                                $('#tgl_penjemputan_error').html('');
+                                $('#tabel-setor-sampah').DataTable().ajax.reload();
+                                // tampilkan pesan sukses simpan data
+                                Toast.fire({
+                                    icon: 'success',
+                                    title: 'Transaksi Setor Sampah berhasil disimpan.'
+                                })
+                            }
                         }
-                        //Data sampah berhasil disimpan
-                        if (data.success) {
-                            // reset form
-                            $('#formSetorSampah')[0].reset();
-                            $('#modalSetorSampah').modal('hide');
-                            $('#id_sampah_error').html('');
-                            $('#jumlah_error').html('');
-                            $('#total_error').html('');
-                            $('#tgl_penjemputan_error').html('');
-                            $('#tabel-setor-sampah').DataTable().ajax.reload();
-                            // tampilkan pesan sukses simpan data
-                            Toast.fire({
-                                icon: 'success',
-                                title: 'Transaksi Setor Sampah berhasil disimpan.'
-                            })
-                        }
-                    }
-                });
+                    });
+                }
             }
         });
 
@@ -317,7 +328,7 @@
             var data = table.row($(this).parents('tr')).data();
             // membuat variabel untuk menampung data
             var status = data[7];
-            // jika status tid
+            // jika status tidak Menunggu
             if (status != 'Menunggu') {
                 // tampilkan pesan gagal hapus data
                 Toast.fire({

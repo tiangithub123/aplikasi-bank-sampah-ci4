@@ -306,6 +306,27 @@ class Validation extends BaseConfig
                 'required' => 'Telepon tidak boleh kosong!'
             ]
         ],
+        'nama_bank' => [
+            'label'  => 'Nama Bank',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Nama Bank tidak boleh kosong!'
+            ]
+        ],
+        'no_rek' => [
+            'label'  => 'No. Rekening',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'No. Rekening tidak boleh kosong!'
+            ]
+        ],
+        'atas_nama' => [
+            'label'  => 'Atas Nama',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Atas Nama tidak boleh kosong!'
+            ]
+        ],        
         'foto' => [
             'label'  => 'Foto',
             'rules'  => 'max_size[foto,2048]|is_image[foto]|mime_in[foto,image/jpg,image/jpeg,image/png,image/gif]',

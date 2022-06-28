@@ -23,10 +23,10 @@
                             <form id="formUser" enctype="multipart/form-data">
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-md-6">
-                                            <input type="hidden" name="id_user" id="id_user" value="<?= $id; ?>">
+                                        <div class="col-md-4">
+                                            <input type="hidden" name="id_nasabah" id="id_nasabah" value="<?= $id; ?>">
                                             <div class="form-group">
-                                                <label>Nama User</label>
+                                                <label>Nama Nasabah</label>
                                                 <input type="text" class="form-control" id="nama_nasabah" name="nama_nasabah" autocomplete="off" readonly>
                                                 <small id="nama_nasabah_error" class="text-danger"></small>
                                             </div>
@@ -51,7 +51,24 @@
                                                 <small id="telepon_error" class="text-danger"></small>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Nama Bank</label>
+                                                <input type="text" class="form-control" id="nama_bank" name="nama_bank" autocomplete="off" readonly>
+                                                <small id="nama_bank_error" class="text-danger"></small>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>No. Rekening</label>
+                                                <input type="text" class="form-control" id="no_rek" name="no_rek" autocomplete="off" readonly>
+                                                <small id="no_rek_error" class="text-danger"></small>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Atas Nama</label>
+                                                <input type="text" class="form-control" id="atas_nama" name="atas_nama" autocomplete="off" readonly>
+                                                <small id="atas_nama_error" class="text-danger"></small>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Foto</label>
                                                 <div id="foto_profil" class="custom-file" style="display: none;">
@@ -133,20 +150,23 @@
         // tampilkan data profil aplikasi
         function tampil_data() {
             // siapkan data "id" profil
-            var id_user = $('#id_user').val();
+            var id_nasabah = $('#id_nasabah').val();
             // tampilkan data nasabah
             $.ajax({
-                url: "/Profil/show_user/" + id_user,
+                url: "/Profil/show_user/" + id_nasabah,
                 type: "GET",
                 dataType: "JSON",
                 success: function(data) {
-                    $('#id_user').val(data.id);
+                    $('#id_nasabah').val(data.id);
                     $('#nama_nasabah').val(data.nama_nasabah);
                     $('#username').val(data.username);
                     // tampilkan keterangan pada password
                     $('#password').attr('placeholder', 'Kosongkan password jika tidak diubah');
                     $('#alamat').val(data.alamat);
                     $('#telepon').val(data.telepon);
+                    $('#nama_bank').val(data.nama_bank);
+                    $('#no_rek').val(data.no_rek);
+                    $('#atas_nama').val(data.atas_nama);
                     $('#imagePreview').show();
                     if (data.foto == '') {
                         $('.foto-preview').attr('src', '/images/nasabah/no_image.gif');
@@ -173,6 +193,9 @@
             $('#password').attr('placeholder', 'Kosongkan password jika tidak diubah');
             $('#alamat').removeAttr('readonly');
             $('#telepon').removeAttr('readonly');
+            $('#nama_bank').removeAttr('readonly');
+            $('#no_rek').removeAttr('readonly');
+            $('#atas_nama').removeAttr('readonly');
             $('#foto_profil').removeAttr('style');
         });
         // ===============================================================================================
@@ -200,6 +223,12 @@
                         else $('#alamat_error').html('');
                         if (data.nasabah_error['telepon'] != '') $('#telepon_error').html(data.nasabah_error['telepon']);
                         else $('#telepon_error').html('');
+                        if (data.nasabah_error['nama_bank'] != '') $('#nama_bank_error').html(data.nasabah_error['nama_bank']);
+                        else $('#nama_bank_error').html('');
+                        if (data.nasabah_error['no_rek'] != '') $('#no_rek_error').html(data.nasabah_error['no_rek']);
+                        else $('#no_rek_error').html('');
+                        if (data.nasabah_error['atas_nama'] != '') $('#atas_nama_error').html(data.nasabah_error['atas_nama']);
+                        else $('#atas_nama_error').html('');
                         if (data.nasabah_error['foto'] != '') $('#foto_error').html(data.nasabah_error['foto']);
                         else $('#foto_error').html('');
                     }
@@ -213,6 +242,9 @@
                         $('#password_error').html('');
                         $('#alamat_error').html('');
                         $('#telepon_error').html('');
+                        $('#nama_bank_error').html('');
+                        $('#no_rek_error').html('');
+                        $('#atas_nama_error').html('');
                         $('#foto_error').html('');
                         // tampilkan pesan sukses simpan data
                         Toast.fire({
@@ -253,6 +285,9 @@
             $('#password').attr('placeholder', 'Kosongkan password jika tidak diubah');
             $('#alamat').attr('readonly', 'true');
             $('#telepon').attr('readonly', 'true');
+            $('#nama_bank').attr('readonly', 'true');
+            $('#no_rek').attr('readonly', 'true');
+            $('#atas_nama').attr('readonly', 'true');
             $('#foto_profil').attr('style', 'display:none;');
         }
         // ==============================================================================================

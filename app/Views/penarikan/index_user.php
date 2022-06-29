@@ -70,6 +70,8 @@
                 <form id="formPenarikan" enctype="multipart/form-data">
                     <div class="modal-body">
                         <input type="hidden" name="id_penarikan" id="id_penarikan">
+                        <input type="hidden" name="nama_bank_cek" id="nama_bank_cek">
+                        <input type="hidden" name="no_rek_cek" id="no_rek_cek">
                         <input type="hidden" name="id_nasabah" id="id_nasabah" value="<?= $id; ?>">
                         <div class="form-group">
                             <label>Sisa saldo</label>
@@ -228,6 +230,17 @@
             $('#formPenarikan')[0].reset();
             // judul form
             $('#modalLabel').text('Input Penarikan');
+            // tampilkan berdasarkan id_nasabah
+            const id_nasabah = $('#id_nasabah').val();;
+            $.ajax({
+                url: "/Penarikan/show_nasabah/" + id_nasabah,
+                type: "GET",
+                dataType: "JSON",
+                success: function(data) {
+                    $('#nama_bank_cek').val(data.nama_bank);
+                    $('#no_rek_cek').val(data.no_rek);
+                }
+            })
         });
 
         // Tampilkan placeholder
@@ -246,15 +259,15 @@
             if ($('#modalLabel').text() == "Input Penarikan") {
                 var saldo = convertToAngka($('#saldo').val());
                 var jumlah = convertToAngka($('#jumlah').val());
-                var nama_bank = "<?= $nama_bank ?>";
-                var no_rek = "<?= $no_rek ?>";
+                var nama_bank_cek = $('#nama_bank_cek').val();
+                var no_rek_cek = $('#no_rek_cek').val();
 
                 if (eval(jumlah) > eval(saldo)) {
                     Toast.fire({
                         icon: 'error',
                         title: 'Jumlah tidak boleh melebihi sisa saldo'
                     })
-                } else if (nama_bank == '' && no_rek == '') {
+                } else if (nama_bank_cek == '' && no_rek_cek == '') {
                     // tampilkan pesan gagal hapus data
                     Toast.fire({
                         icon: 'warning',
@@ -273,21 +286,15 @@
                         success: function(data) {
                             //Data error 
                             if (data.error) {
-                                if (data.penarikan_error['jenis'] != '') $('#jenis_error').html(data.penarikan_error['jenis']);
-                                else $('#jenis_error').html('');
                                 if (data.penarikan_error['jumlah'] != '') $('#jumlah_error').html(data.penarikan_error['jumlah']);
                                 else $('#jumlah_error').html('');
-                                if (data.penarikan_error['keterangan'] != '') $('#keterangan_error').html(data.penarikan_error['keterangan']);
-                                else $('#keterangan_error').html('');
                             }
                             //Data sampah berhasil disimpan
                             if (data.success) {
                                 // reset form
                                 $('#formPenarikan')[0].reset();
                                 $('#modalPenarikan').modal('hide');
-                                $('#jenis_error').html('');
                                 $('#jumlah_error').html('');
-                                $('#keterangan_error').html('');
                                 $('#tabel-penarikan').DataTable().ajax.reload();
                                 // tampilkan pesan sukses simpan data
                                 Toast.fire({

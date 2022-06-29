@@ -32,8 +32,8 @@
                                         <th>No.</th>
                                         <th>Tanggal</th>
                                         <th>Nama Nasabah</th>
-                                        <th>Jenis</th>
-                                        <th>Keterangan</th>
+                                        <th>Nama Bank</th>
+                                        <th>No. Rekening</th>
                                         <th>Jumlah</th>
                                         <th>Tgl. Verikasi</th>
                                         <th>Status</th>
@@ -74,12 +74,12 @@
                             <input type="text" class="form-control" id="nama_nasabah" name="nama_nasabah" autocomplete="off" readonly>
                         </div>
                         <div class="form-group">
-                            <label>Jenis</label>
-                            <input type="text" class="form-control" id="jenis" name="jenis" autocomplete="off" readonly>
+                            <label>Nama Bank</label>
+                            <input type="text" class="form-control" id="nama_bank" name="nama_bank" autocomplete="off" readonly>
                         </div>
                         <div class="form-group">
-                            <label>Keterangan</label>
-                            <textarea class="form-control" name="keterangan" id="keterangan" rows="3" readonly></textarea>
+                            <label>no. Rekening</label>
+                            <textarea class="form-control" name="no_rek" id="no_rek" rows="3" readonly></textarea>
                         </div>
                         <div class="form-group">
                             <label>Jumlah</label>
@@ -172,18 +172,19 @@
                     "className": 'text-center',
                 },
                 {
-                    "targets": [2],
-                    "width": '150px',
-                    "className": 'text-center',
-                },
-                {
                     "responsivePriority": 1,
-                    "targets": [3],
+                    "targets": [2],
                     "width": '100px',
                 },
                 {
+                    "targets": [3],
+                    "width": '100px',
+                    "className": 'text-center',
+                },
+                {
                     "targets": [4],
-                    "width": '200px',
+                    "width": '100px',
+                    "className": 'text-center',
                 },
                 {
                     "targets": [5],
@@ -239,8 +240,8 @@
                     $('#id_penarikan').val(data.id);
                     $('#id_nasabah').val(data.id_nasabah);
                     $('#nama_nasabah').val(data.nama_nasabah);
-                    $('#jenis').val(data.jenis);
-                    $('#keterangan').val(data.keterangan);
+                    $('#nama_bank').val(data.nama_bank);
+                    $('#no_rek').val(data.no_rek);
                     $('#jumlah').val(convertToRupiah(data.jumlah));
                     $('#status').val(data.status);
                     $('#modalPenarikan').modal('show');

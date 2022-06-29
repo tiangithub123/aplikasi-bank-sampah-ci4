@@ -79,7 +79,7 @@ class Penarikan extends BaseController
     {
         $db      = \Config\Database::connect();
         $builder = $db->table('penarikan a');
-        $builder->select('a.id, a.id_nasabah, b.nama_nasabah, a.jenis, a.keterangan, a.jumlah, a.status');
+        $builder->select('a.id, a.id_nasabah, b.nama_nasabah, b.nama_bank, b.no_rek, a.jumlah, a.status');
         $builder->join('nasabah b', 'a.id_nasabah = b.id', 'left');
         $builder->where('a.id', $id_penarikan);
         $data = $builder->get();
@@ -87,6 +87,13 @@ class Penarikan extends BaseController
             echo json_encode($row);
         }
     }
+
+    public function show_nasabah($id_nasabah)
+    {
+        $data = $this->M_nasabah->find($id_nasabah);
+        echo json_encode($data);
+    }
+    
 
     // Simpan data sampah
     public function save()
@@ -214,8 +221,8 @@ class Penarikan extends BaseController
                 $row[] = $no;
                 $row[] = date("d-m-Y H:i:s", strtotime($list->tanggal));
                 $row[] = $list->nama_nasabah;
-                $row[] = $list->jenis;
-                $row[] = $list->keterangan;
+                $row[] = $list->nama_bank;
+                $row[] = $list->no_rek;
                 $row[] = $list->jumlah;
                 $row[] = $list->tgl_verifikasi;
                 $row[] = $list->status;

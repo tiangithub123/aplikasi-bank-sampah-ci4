@@ -20,7 +20,7 @@
                     <div class="card card-primary card-outline">
                         <div class="card-body">
                             <!-- Form Pengaturan Profil -->
-                            <form id="formUser" enctype="multipart/form-data">
+                            <form id="formNasabah" enctype="multipart/form-data">
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-4">
@@ -203,7 +203,7 @@
         // ============================================ Form =============================================
         // simpan data ke database
         $('#btnSimpan').on('click', function() {
-            var data = new FormData($("#formUser")[0]);
+            var data = new FormData($("#formNasabah")[0]);
             $.ajax({
                 url: "/Profil/update_user",
                 method: "POST",
@@ -235,7 +235,7 @@
                     //Data user berhasil disimpan
                     if (data.success) {
                         // reset form
-                        $('#formUser')[0].reset();
+                        $('#formNasabah')[0].reset();
                         $('#modalUser').modal('hide');
                         $('#nama_nasabah_error').html('');
                         $('#username_error').html('');

@@ -9,9 +9,9 @@ class NasabahModel extends Model
 {
     protected $table = "nasabah";
     protected $primaryKey = 'id';
-    protected $allowedFields = ['nama_nasabah', 'username', 'password', 'alamat', 'telepon','no_rekening','saldo', 'foto'];
+    protected $allowedFields = ['nama_nasabah', 'username', 'password', 'alamat', 'telepon', 'nama_bank', 'no_rek', 'atas_nama', 'saldo', 'foto'];
     protected $column_order = [null, 'nama_nasabah', 'level', null];
-    protected $column_search = ['nama_nasabah','level'];
+    protected $column_search = ['nama_nasabah', 'level'];
     protected $order = ['id' => 'desc'];
     protected $request;
     protected $db;

@@ -383,25 +383,11 @@ class Validation extends BaseConfig
 
     // Validasi transaksi penarikan
     public $penarikan = [
-        'jenis' => [
-            'label'  => 'Jenis',
-            'rules'  => 'required',
-            'errors' => [
-                'required' => 'Jenis tidak boleh kosong!'
-            ]
-        ],
         'jumlah' => [
             'label'  => 'Jumlah',
             'rules'  => 'required',
             'errors' => [
                 'required' => 'Jumlah tidak boleh kosong!'
-            ]
-        ],
-        'keterangan' => [
-            'label'  => 'Keterangan',
-            'rules'  => 'required',
-            'errors' => [
-                'required' => 'Keterangan tidak boleh kosong!'
             ]
         ],
     ];

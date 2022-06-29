@@ -35,10 +35,12 @@
                                         <th>No.</th>
                                         <th>Tanggal</th>
                                         <th>Nama Nasabah</th>
+                                        <th>No. Telepon</th>
                                         <th>Nama Sampah</th>
                                         <th>Jumlah</th>
                                         <th>Satuan</th>
                                         <th>Total</th>
+                                        <th>Alamat</th>
                                         <th>Tgl. Penjemputan</th>
                                         <th>Status</th>
                                         <th>Aksi</th>
@@ -186,36 +188,45 @@
                 },
                 {
                     "targets": [3],
-                    "width": '100px',
+                    "width": '80px',
+                    "className": 'text-center',
                 },
                 {
                     "targets": [4],
                     "width": '100px',
+                },
+                {
+                    "targets": [5],
+                    "width": '50px',
                     "className": 'text-center',
                     "render": function(data, type, row) {
-                        var btn = data + " " + row[5];
+                        var btn = data + " " + row[6];
                         return btn;
                     }
                 },
                 {
-                    "targets": [5],
+                    "targets": [6],
                     "width": '100px',
                     "visible": false,
                 },
                 {
-                    "targets": [6],
+                    "targets": [7],
                     "width": '100px',
                     "className": 'text-right',
                     render: $.fn.DataTable.render.number('.', ',', 0, 'Rp. '),
                 },
                 {
-                    "targets": [7],
+                    "targets": [8],
+                    "width": '100px',
+                },
+                {
+                    "targets": [9],
                     "width": '100px',
                     "className": 'text-center',
                 },
                 {
-                    "targets": [8],
-                    "width": '100px',
+                    "targets": [10],
+                    "width": '80px',
                     "className": 'text-center',
                     "render": function(data, type, row) {
                         switch (data) {
@@ -233,7 +244,7 @@
                 },
                 {
                     "responsivePriority": 2,
-                    "targets": [9],
+                    "targets": [11],
                     "orderable": false,
                     "width": '80px',
                     "className": 'text-center',

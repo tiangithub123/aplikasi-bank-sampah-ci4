@@ -72,6 +72,8 @@
                     <div class="modal-body">
                         <input type="hidden" name="id_setor" id="id_setor">
                         <input type="hidden" name="id_nasabah" id="id_nasabah" value="<?= $id; ?>">
+                        <input type="hidden" name="alamat" id="alamat">
+                        <input type="hidden" name="telepon" id="telepon">
                         <div class="form-group">
                             <label>Nama Sampah</label>
                             <select class="form-control chosen-select" name="id_sampah" id="id_sampah">
@@ -239,6 +241,17 @@
             $('#id_sampah').val('').trigger('chosen:updated');
             // judul form
             $('#modalLabel').text('Input Data Setor Sampah');
+            // tampilkan berdasarkan id_nasabah
+            const id_nasabah = $('#id_nasabah').val();;
+            $.ajax({
+                url: "/SetorSampah/show_nasabah/" + id_nasabah,
+                type: "GET",
+                dataType: "JSON",
+                success: function(data) {
+                    $('#alamat').val(data.alamat);
+                    $('#telepon').val(data.telepon);
+                }
+            })
         });
 
         // Tampilkan data
@@ -269,8 +282,8 @@
             // jika form input data sampah yang ditampilkan, jalankan perintah simpan
             if ($('#modalLabel').text() == "Input Data Setor Sampah") {
                 // jika alamat, no. telepon kosong
-                var alamat = "<?= $alamat ?>";
-                var telepon = "<?= $telepon ?>";
+                var alamat = $('#alamat').val();
+                var telepon = $('#telepon').val();
                 if (alamat == '' && telepon == '') {
                     // tampilkan pesan gagal hapus data
                     Toast.fire({

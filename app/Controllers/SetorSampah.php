@@ -93,6 +93,12 @@ class SetorSampah extends BaseController
         }
     }
 
+    public function show_nasabah($id_nasabah)
+    {
+        $data = $this->M_nasabah->find($id_nasabah);
+        echo json_encode($data);
+    }
+    
     public function show_transaksi($id_setor)
     {
         $db      = \Config\Database::connect();
@@ -247,10 +253,12 @@ class SetorSampah extends BaseController
                 $row[] = $no;
                 $row[] = date("d-m-Y H:i:s", strtotime($list->tanggal));
                 $row[] = $list->nama_nasabah;
+                $row[] = $list->telepon;
                 $row[] = $list->nama_sampah;
                 $row[] = $list->jumlah;
                 $row[] = $list->nama_satuan;
                 $row[] = $list->total;
+                $row[] = $list->alamat;
                 $row[] = date("d-m-Y", strtotime($list->tgl_penjemputan));
                 $row[] = $list->status;
                 $row[] = $this->_action_admin($list->id);

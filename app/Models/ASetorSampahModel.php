@@ -23,7 +23,7 @@ class ASetorSampahModel extends Model
         $this->db      = db_connect();
         $this->request = $request;
         $this->dt      = $this->db->table($this->table);
-        $this->dt      = $this->db->table($this->table)->select('setor_sampah.id, tanggal, nasabah.nama_nasabah, sampah.nama_sampah, jumlah, satuan.nama_satuan, total, tgl_penjemputan, status')
+        $this->dt      = $this->db->table($this->table)->select('setor_sampah.id, tanggal, nasabah.nama_nasabah, nasabah.telepon, sampah.nama_sampah, jumlah, satuan.nama_satuan, total, nasabah.alamat, tgl_penjemputan, status')
             ->join('nasabah', 'nasabah.id = setor_sampah.id_nasabah', 'left')
             ->join('sampah', 'sampah.id = setor_sampah.id_sampah', 'left')
             ->join('satuan', 'satuan.id = sampah.id_satuan', 'left');

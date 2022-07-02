@@ -23,7 +23,7 @@ class User extends BaseController
 
     public function index()
     {
-        $data['title']     = "Data User | CV. Travel Pratama";
+        $data['title']     = "Data User | Rewaste World";
         $data['menu']      = "";
         $data['page']      = "user";
         $data['nama_user'] = $this->session->get('nama_user');

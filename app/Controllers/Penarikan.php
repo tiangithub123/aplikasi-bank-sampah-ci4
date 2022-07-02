@@ -29,7 +29,7 @@ class Penarikan extends BaseController
 
     public function index_admin()
     {
-        $data['title']     = "Transaksi Penarikan | Aplikasi Bank Sampah";
+        $data['title']     = "Transaksi Penarikan | Rewaste World";
         $data['menu']      = "";
         $data['page']      = "transaksi-penarikan";
         $data['id']        = $this->session->get('id');
@@ -41,7 +41,7 @@ class Penarikan extends BaseController
 
     public function index_user()
     {
-        $data['title']        = "Transaksi Penarikan | Aplikasi Bank Sampah";
+        $data['title']        = "Transaksi Penarikan | Rewaste World";
         $data['menu']         = "";
         $data['page']         = "transaksi-penarikan";
         $data['id']           = $this->session->get('id');

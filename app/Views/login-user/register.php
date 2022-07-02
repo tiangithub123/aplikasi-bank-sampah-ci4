@@ -26,7 +26,7 @@
                 <div class="login-logo">
                     <img class="brand mb-2 img-circle elevation-2" src="/assets/templates/adminlte320/img/AdminLTELogo.png" height="135" width="135"><br>
                 </div>
-                <a href="/user/register" class="h3"><b>Aplikasi Bank Sampah</b></a>
+                <a href="/user/register" class="h3"><b>Rewaste World</b></a>
             </div>
             <div class="card-body">
                 <p class="login-box-msg">Silahkan isi data register berikut :</p>

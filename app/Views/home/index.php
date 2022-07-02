@@ -4,9 +4,9 @@
 <header id="header" class="header fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-        <a href="index.html" class="logo d-flex align-items-center">
-            <img src="assets/templates/flexstart/assets/img/logo.png" alt="">
-            <span>BANK SAMPAH</span>
+        <a href="index.php" class="logo d-flex align-items-center">
+            <img src="assets/templates/flexstart/assets/img/logo.svg" alt="">
+            <span>Rewaste World</span>
         </a>
 
         <nav id="navbar" class="navbar">
@@ -32,7 +32,7 @@
             <div class="col-lg-6 d-flex flex-column justify-content-center">
                 <h1 data-aos="fade-up">Jagalah Kebersihan!</h1>
                 <h2 data-aos="fade-up" data-aos-delay="400">
-                    Kirim Limbah/Sampah yang ada dirumbah, kami tukar dengan uang.
+                    Kirim Limbah/Sampah yang ada dirumah, kami tukar dengan uang.
                 </h2>
                 <div data-aos="fade-up" data-aos-delay="600">
                     <div class="text-center text-lg-start">
@@ -44,7 +44,7 @@
                 </div>
             </div>
             <div class="col-lg-6 hero-img" data-aos="zoom-out" data-aos-delay="200">
-                <img src="assets/templates/flexstart/assets/img/hero-img.png" class="img-fluid" alt="">
+                <img src="assets/templates/flexstart/assets/img/hero-img1.svg" class="img-fluid" alt="">
             </div>
         </div>
     </div>
@@ -67,13 +67,13 @@
                         <h3>Tentang Kami</h3>
                         <h2>Deskripsi singkat tentang kami</h2>
                         <p>
-                            Waste4future merupakan perusahaan yang menyediakan solusi pengolahan sampah dengan melakukan penyaluran limbah ke perusahaan pengolah limbah untuk mengurangi limbah yang ada dimasyarakat dan juga menjaga kelestarian lingkungan di Indonesia.
+                            Rewaste World merupakan perusahaan yang menyediakan solusi pengolahan sampah dengan melakukan penyaluran limbah ke perusahaan pengolah limbah untuk mengurangi limbah yang ada dimasyarakat dan juga menjaga kelestarian lingkungan di Indonesia.
                         </p>
                     </div>
                 </div>
 
                 <div class="col-lg-6 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
-                    <img src="assets/templates/flexstart/assets/img/about.jpg" class="img-fluid" alt="">
+                    <img src="assets/templates/flexstart/assets/img/about.png" class="img-fluid" alt="">
                 </div>
 
             </div>
@@ -304,21 +304,21 @@
                             <div class="info-box">
                                 <i class="bi bi-telephone"></i>
                                 <h3>Telepon</h3>
-                                <p>+6285123456789<br>+6285123456789</p>
+                                <p>+6285123456789<br>0219238231</p>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="info-box">
                                 <i class="bi bi-envelope"></i>
                                 <h3>Email</h3>
-                                <p>waste4future@gmail.com <br> waste4future@gmail.com</p>
+                                <p>RewasteWorld@gmail.com</p>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="info-box">
                                 <i class="bi bi-clock"></i>
                                 <h3>Jam Buka</h3>
-                                <p>Senin - Jumlah<br>08.00 - 16.00</p>
+                                <p>Senin - Jumat<br>08.00 - 16.00</p>
                             </div>
                         </div>
                     </div>

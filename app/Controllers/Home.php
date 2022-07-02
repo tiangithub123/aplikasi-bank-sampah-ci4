@@ -6,7 +6,7 @@ class Home extends BaseController
 {
     public function index()
     {
-        $data['title'] = "Aplikasi Bank Sampah";
+        $data['title'] = "Rewaste World";
         return view('home/index', $data);
     }
 }

@@ -23,7 +23,7 @@ class Jenis extends BaseController
 
     public function index()
     {
-        $data['title']     = "Data Jenis | Aplikasi Bank Sampah";
+        $data['title']     = "Data Jenis | Rewaste World";
         $data['menu']      = "data_sampah";
         $data['page']      = "jenis";
         $data['nama_user'] = $this->session->get('nama_user');

@@ -18,7 +18,7 @@ class Dashboard extends BaseController
     // Halaman Dashboard
     public function index()
     {
-        $data['title']     = "Dashboard | Aplikasi Bank Sampah";
+        $data['title']     = "Dashboard | Rewaste World";
         $data['menu']      = "";
         $data['page']      = "dashboard";
         $data['nama_user'] = $this->session->get('nama_user');
@@ -30,7 +30,7 @@ class Dashboard extends BaseController
     // Halaman Dashboard user
     public function index_user()
     {
-        $data['title']        = "Dashboard | Aplikasi Bank Sampah";
+        $data['title']        = "Dashboard | Rewaste World";
         $data['menu']         = "";
         $data['page']         = "dashboard";
         $data['id']           = $this->session->get('id');

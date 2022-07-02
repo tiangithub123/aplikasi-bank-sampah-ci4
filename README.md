@@ -30,7 +30,3 @@
   - [x] Penarikan Saldo
   - [x] Pengaturan Profil
   - [x] LogOut
-<<<<<<< HEAD
-=======
-
->>>>>>> a8ae283481921b0dac5f5ca6dee347e0affd3c97

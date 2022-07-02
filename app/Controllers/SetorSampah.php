@@ -32,7 +32,7 @@ class SetorSampah extends BaseController
 
     public function index()
     {
-        $data['title']     = "Data Setor Sampah | Aplikasi Bank Sampah";
+        $data['title']     = "Data Setor Sampah | Rewaste World";
         $data['menu']      = "";
         $data['page']      = "setor-sampah";
         $data['id']        = $this->session->get('id');
@@ -44,7 +44,7 @@ class SetorSampah extends BaseController
 
     public function index_user()
     {
-        $data['title']        = "Transaksi Setor Sampah | Aplikasi Bank Sampah";
+        $data['title']        = "Transaksi Setor Sampah | Rewaste World";
         $data['menu']         = "";
         $data['page']         = "transaksi-setor-sampah";
         $data['sampah']       = $this->M_sampah->findAll();

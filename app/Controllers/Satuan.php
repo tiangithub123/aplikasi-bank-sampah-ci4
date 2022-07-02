@@ -23,7 +23,7 @@ class Satuan extends BaseController
 
     public function index()
     {
-        $data['title']     = "Data Satuan | Aplikasi Bank Sampah";
+        $data['title']     = "Data Satuan | Rewaste World";
         $data['menu']      = "data_sampah";
         $data['page']      = "satuan";
         $data['nama_user'] = $this->session->get('nama_user');

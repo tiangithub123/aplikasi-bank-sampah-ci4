@@ -3,7 +3,7 @@
     <!-- Brand Logo -->
     <a href="<?php echo base_url('user/dashboard'); ?>" class="brand-link">
         <img src="/assets/templates/adminlte320/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">App Bank Sampah</span>
+        <span class="brand-text font-weight-light">Rewaste World</span>
     </a>
 
     <!-- Sidebar -->

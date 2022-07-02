@@ -26,21 +26,21 @@ class Login extends BaseController
     // Halaman Login admin
     public function index()
     {
-        $data['title']   = "Login | Aplikasi Bank Sampah";
+        $data['title']   = "Login | Rewaste World";
         return view('login-admin/index', $data);
     }
 
     // Halaman login user
     public function login_user()
     {
-        $data['title']   = "Login | Aplikasi Bank Sampah";
+        $data['title']   = "Login | Rewaste World";
         return view('login-user/index', $data);
     }
 
     // Halaman register user
     public function register_user()
     {
-        $data['title']   = "Register | Aplikasi Bank Sampah";
+        $data['title']   = "Register | Rewaste World";
         return view('login-user/register', $data);
     }
 

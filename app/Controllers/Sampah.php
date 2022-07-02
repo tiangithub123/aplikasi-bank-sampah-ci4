@@ -29,7 +29,7 @@ class Sampah extends BaseController
 
     public function index()
     {
-        $data['title']     = "Data Sampah | Aplikasi Bank Sampah";
+        $data['title']     = "Data Sampah | Rewaste World";
         $data['menu']      = "data_sampah";
         $data['page']      = "sampah";
         $data['jenis']     = $this->M_jenis->findAll();

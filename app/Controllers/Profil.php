@@ -27,7 +27,7 @@ class Profil extends BaseController
     // Halaman profil
     public function index()
     {
-        $data['title']     = "Pengaturan Profil | Aplikasi Bank Sampah";
+        $data['title']     = "Pengaturan Profil | Rewaste World";
         $data['menu']      = "";
         $data['page']      = "profil";
         $data['id']        = $this->session->get('id');
@@ -40,7 +40,7 @@ class Profil extends BaseController
     // Halaman profil user
     public function index_user()
     {
-        $data['title']        = "Pengaturan Profil | Aplikasi Bank Sampah";
+        $data['title']        = "Pengaturan Profil | Rewaste World";
         $data['menu']         = "";
         $data['page']         = "profil";
         $data['id']           = $this->session->get('id');

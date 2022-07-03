@@ -73,6 +73,12 @@
                         </ul>
                     </li>
                     <li class="nav-item">
+                        <a href="<?php echo base_url('admin/nasabah'); ?>" class="nav-link <?php if ($page == 'nasabah') echo " active";  ?>">
+                            <i class="nav-icon fas fa-users"></i>
+                            <p>Data Nasabah</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="<?php echo base_url('admin/profil'); ?>" class="nav-link <?php if ($page == 'profil') echo " active";  ?>">
                             <i class="nav-icon fas fa-user-cog"></i>
                             <p>Pengaturan Profil</p>
@@ -80,7 +86,7 @@
                     </li>
                     <li class="nav-item">
                         <a href="<?php echo base_url('admin/user'); ?>" class="nav-link <?php if ($page == 'user') echo " active";  ?>">
-                            <i class="nav-icon fas fa-users"></i>
+                            <i class="nav-icon fas fa-user-friends"></i>
                             <p>Managemen User</p>
                         </a>
                     </li>

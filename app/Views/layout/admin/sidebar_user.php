@@ -48,6 +48,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="<?php echo base_url('user/rekening'); ?>" class="nav-link <?php if ($page == 'rekening') echo " active";  ?>">
+                        <i class="nav-icon fas fa-credit-card"></i>
+                        <p>Data Rekening</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="<?php echo base_url('user/profil'); ?>" class="nav-link <?php if ($page == 'profil') echo " active";  ?>">
                         <i class="nav-icon fas fa-user-cog"></i>
                         <p>Pengaturan Profil</p>

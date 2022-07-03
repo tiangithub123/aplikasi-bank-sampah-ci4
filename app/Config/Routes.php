@@ -55,6 +55,7 @@ $routes->group('user', function ($routes) {
     $routes->get('dashboard', 'Dashboard::index_user', ['filter' => 'authuser']);
     $routes->get('transaksi-setor-sampah', 'SetorSampah::index_user', ['filter' => 'authuser']);
     $routes->get('transaksi-penarikan', 'Penarikan::index_user', ['filter' => 'authuser']);
+    $routes->get('rekening', 'Rekening::index', ['filter' => 'authuser']);
     $routes->get('profil', 'Profil::index_user', ['filter' => 'authuser']);
     $routes->get('logout', 'Dashboard::logout_user', ['filter' => 'authuser']);
 });

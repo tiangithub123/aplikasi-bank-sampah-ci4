@@ -381,4 +381,29 @@ class Validation extends BaseConfig
             ]
         ],
     ];
+
+    // Validasi rekening
+    public $rekening = [
+        'nama_bank' => [
+            'label'  => 'Nama Bank',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Nama Bank tidak boleh kosong!'
+            ]
+        ],
+        'no_rekening' => [
+            'label'  => 'No. Rekening',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'No. Rekening tidak boleh kosong!'
+            ]
+        ],
+        'atas_nama' => [
+            'label'  => 'Atas Nama',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Atas Nama tidak boleh kosong!'
+            ]
+        ]
+    ];
 }

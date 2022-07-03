@@ -22,6 +22,11 @@ class Penarikan extends Migration
                 'constraint' => 5,
                 'unsigned'   => true,
             ],
+            'id_rekening'      => [
+                'type'       => 'INT',
+                'constraint' => 5,
+                'unsigned'   => true,
+            ],
             'jumlah'      => [
                 'type' => 'INT',
             ],
@@ -40,6 +45,7 @@ class Penarikan extends Migration
         $this->forge->addKey('id', TRUE);
         // Membuat foreignKey
         $this->forge->addForeignKey('id_nasabah', 'nasabah', 'id');
+        $this->forge->addForeignKey('id_rekening', 'rekening', 'id');
         // Membuat tabel penarikan
         $this->forge->createTable('penarikan', TRUE);
     }

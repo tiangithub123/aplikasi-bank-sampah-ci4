@@ -9,9 +9,9 @@ class PenarikanAdminModel extends Model
 {
     protected $table = "penarikan";
     protected $primaryKey = 'id';
-    protected $allowedFields = ['tanggal', 'id_nasabah', 'jumlah', 'tgl_verifikasi', 'status'];
-    protected $column_order = [null, 'tanggal', 'id_nasabah', 'jumlah', 'tgl_verifikasi', 'status', null];
-    protected $column_search = ['tanggal', 'id_nasabah', 'jumlah', 'tgl_verifikasi', 'status'];
+    protected $allowedFields = ['tanggal', 'id_nasabah', 'id_rekening', 'jumlah', 'tgl_verifikasi', 'status'];
+    protected $column_order = [null, 'tanggal', 'id_nasabah', 'id_rekening', 'jumlah', 'tgl_verifikasi', 'status', null];
+    protected $column_search = ['tanggal', 'id_nasabah', 'id_rekening', 'jumlah', 'tgl_verifikasi', 'status'];
     protected $order = ['id' => 'desc'];
     protected $request;
     protected $db;
@@ -23,9 +23,9 @@ class PenarikanAdminModel extends Model
         $this->db      = db_connect();
         $this->request = $request;
 
-        $this->dt      = $this->db->table($this->table);
-        $this->dt      = $this->db->table($this->table)->select('penarikan.id, tanggal, nasabah.nama_nasabah, nasabah.nama_bank, nasabah.no_rek, jumlah, tgl_verifikasi, status')
-            ->join('nasabah', 'nasabah.id = penarikan.id_nasabah', 'left');
+        $this->dt      = $this->db->table($this->table)->select('penarikan.id, tanggal, nasabah.nama_nasabah, rekening.nama_bank, rekening.no_rekening, jumlah, tgl_verifikasi, status')
+        ->join('nasabah', 'nasabah.id = penarikan.id_nasabah', 'left')
+        ->join('rekening', 'rekening.id = penarikan.id_rekening', 'left');
     }
 
     private function _get_datatables_query()

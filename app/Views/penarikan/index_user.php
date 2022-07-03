@@ -70,8 +70,6 @@
                 <form id="formPenarikan" enctype="multipart/form-data">
                     <div class="modal-body">
                         <input type="hidden" name="id_penarikan" id="id_penarikan">
-                        <input type="hidden" name="nama_bank_cek" id="nama_bank_cek">
-                        <input type="hidden" name="no_rek_cek" id="no_rek_cek">
                         <input type="hidden" name="id_nasabah" id="id_nasabah" value="<?= $id; ?>">
                         <div class="form-group">
                             <label>Sisa saldo</label>
@@ -83,12 +81,14 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Nama Bank</label>
-                            <input class="form-control" type="text" name="nama_bank" id="nama_bank" value="<?= $nama_bank; ?>" autocomplete="off" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label>No. Rekening</label>
-                            <input class="form-control" type="text" name="no_rek" id="no_rek" value="<?= $no_rek; ?>" autocomplete="off" readonly>
+                            <label>Rekening</label>
+                            <select class="form-control chosen-select" name="id_rekening" id="id_rekening">
+                                <option value="">-- Pilih --</option>
+                                <?php foreach ($rekening as $row) : ?>
+                                    <option value="<?= $row['id']; ?>"><?= $row['nama_bank']; ?> | <?= $row['no_rekening']; ?> | <?= $row['atas_nama']; ?></option>
+                                <?php endforeach ?>
+                            </select>
+                            <small id="id_rekening_error" class="text-danger"></small>
                         </div>
                         <div class="form-group">
                             <label>Jumlah</label>
@@ -230,17 +230,6 @@
             $('#formPenarikan')[0].reset();
             // judul form
             $('#modalLabel').text('Input Penarikan');
-            // tampilkan berdasarkan id_nasabah
-            const id_nasabah = $('#id_nasabah').val();;
-            $.ajax({
-                url: "/Penarikan/show_nasabah/" + id_nasabah,
-                type: "GET",
-                dataType: "JSON",
-                success: function(data) {
-                    $('#nama_bank_cek').val(data.nama_bank);
-                    $('#no_rek_cek').val(data.no_rek);
-                }
-            })
         });
 
         // Tampilkan placeholder
@@ -259,19 +248,11 @@
             if ($('#modalLabel').text() == "Input Penarikan") {
                 var saldo = convertToAngka($('#saldo').val());
                 var jumlah = convertToAngka($('#jumlah').val());
-                var nama_bank_cek = $('#nama_bank_cek').val();
-                var no_rek_cek = $('#no_rek_cek').val();
 
                 if (eval(jumlah) > eval(saldo)) {
                     Toast.fire({
                         icon: 'error',
                         title: 'Jumlah tidak boleh melebihi sisa saldo'
-                    })
-                } else if (nama_bank_cek == '' && no_rek_cek == '') {
-                    // tampilkan pesan gagal hapus data
-                    Toast.fire({
-                        icon: 'warning',
-                        title: 'Lengkapi data Anda di pengaturan profil dulu.'
                     })
                 } else {
                     var data = new FormData($("#formPenarikan")[0]);
@@ -286,6 +267,8 @@
                         success: function(data) {
                             //Data error 
                             if (data.error) {
+                                if (data.penarikan_error['id_rekening'] != '') $('#id_rekening_error').html(data.penarikan_error['id_rekening']);
+                                else $('#id_rekening_error').html('');
                                 if (data.penarikan_error['jumlah'] != '') $('#jumlah_error').html(data.penarikan_error['jumlah']);
                                 else $('#jumlah_error').html('');
                             }
@@ -294,6 +277,7 @@
                                 // reset form
                                 $('#formPenarikan')[0].reset();
                                 $('#modalPenarikan').modal('hide');
+                                $('#id_rekening_error').html('');
                                 $('#jumlah_error').html('');
                                 $('#tabel-penarikan').DataTable().ajax.reload();
                                 // tampilkan pesan sukses simpan data

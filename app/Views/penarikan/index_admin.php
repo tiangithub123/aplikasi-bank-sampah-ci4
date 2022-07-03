@@ -78,8 +78,8 @@
                             <input type="text" class="form-control" id="nama_bank" name="nama_bank" autocomplete="off" readonly>
                         </div>
                         <div class="form-group">
-                            <label>no. Rekening</label>
-                            <textarea class="form-control" name="no_rek" id="no_rek" rows="3" readonly></textarea>
+                            <label>No. Rekening</label>
+                            <input type="text" class="form-control" id="no_rekening" name="no_rekening" autocomplete="off" readonly>
                         </div>
                         <div class="form-group">
                             <label>Jumlah</label>
@@ -241,7 +241,7 @@
                     $('#id_nasabah').val(data.id_nasabah);
                     $('#nama_nasabah').val(data.nama_nasabah);
                     $('#nama_bank').val(data.nama_bank);
-                    $('#no_rek').val(data.no_rek);
+                    $('#no_rekening').val(data.no_rekening);
                     $('#jumlah').val(convertToRupiah(data.jumlah));
                     $('#status').val(data.status);
                     $('#modalPenarikan').modal('show');

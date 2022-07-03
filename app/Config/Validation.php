@@ -362,6 +362,13 @@ class Validation extends BaseConfig
 
     // Validasi transaksi penarikan
     public $penarikan = [
+        'id_rekening' => [
+            'label'  => 'Rekening',
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Rekening tidak boleh kosong!'
+            ]
+        ],
         'jumlah' => [
             'label'  => 'Jumlah',
             'rules'  => 'required',

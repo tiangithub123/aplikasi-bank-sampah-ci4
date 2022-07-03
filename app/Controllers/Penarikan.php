@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\PenarikanUserModel;
 use App\Models\PenarikanAdminModel;
 use App\Models\NasabahModel;
+use App\Models\RekeningModel;
 use Config\Services;
 
 class Penarikan extends BaseController
@@ -13,6 +14,7 @@ class Penarikan extends BaseController
     protected $M_penarikan_user;
     protected $M_penarikan_admin;
     protected $M_nasabah;
+    protected $M_rekening;
     protected $request;
     protected $form_validation;
     protected $session;
@@ -23,6 +25,7 @@ class Penarikan extends BaseController
         $this->M_penarikan_user  = new PenarikanUserModel($this->request);
         $this->M_penarikan_admin = new PenarikanAdminModel($this->request);
         $this->M_nasabah         = new NasabahModel($this->request);
+        $this->M_rekening        = new RekeningModel($this->request);
         $this->form_validation   = \Config\Services::validation();
         $this->session           = \Config\Services::session();
     }
@@ -46,10 +49,10 @@ class Penarikan extends BaseController
         $data['page']         = "transaksi-penarikan";
         $data['id']           = $this->session->get('id');
         $data['nama_nasabah'] = $this->session->get('nama_nasabah');
-        $data['nama_bank']    = $this->session->get('nama_bank');
-        $data['no_rek']       = $this->session->get('no_rek');
         $data['saldo']        = $this->session->get('saldo');
         $data['foto']         = $this->session->get('foto');
+        $id_nasabah           = $this->session->get('id');
+        $data['rekening']     = $this->M_rekening->where('id_nasabah', $id_nasabah)->findAll();
         return view('penarikan/index_user', $data);
     }
 
@@ -79,8 +82,9 @@ class Penarikan extends BaseController
     {
         $db      = \Config\Database::connect();
         $builder = $db->table('penarikan a');
-        $builder->select('a.id, a.id_nasabah, b.nama_nasabah, b.nama_bank, b.no_rek, a.jumlah, a.status');
+        $builder->select('a.id, a.id_nasabah, b.nama_nasabah, c.nama_bank, c.no_rekening, a.jumlah, a.status');
         $builder->join('nasabah b', 'a.id_nasabah = b.id', 'left');
+        $builder->join('rekening c', 'a.id_rekening = c.id', 'left');
         $builder->where('a.id', $id_penarikan);
         $data = $builder->get();
         foreach ($data->getResult() as $row) {
@@ -88,25 +92,16 @@ class Penarikan extends BaseController
         }
     }
 
-    public function show_nasabah($id_nasabah)
-    {
-        $data = $this->M_nasabah->find($id_nasabah);
-        echo json_encode($data);
-    }
-    
-
     // Simpan data sampah
     public function save()
     {
-        $id_nasabah = $this->request->getPost('id_nasabah');
-        $jenis      = $this->request->getPost('jenis');
-        $jumlah     = str_replace('.', '', trim($this->request->getPost('jumlah')));
-        $keterangan = $this->request->getPost('keterangan');
+        $id_nasabah  = $this->request->getPost('id_nasabah');
+        $id_rekening = $this->request->getPost('id_rekening');
+        $jumlah      = str_replace('.', '', trim($this->request->getPost('jumlah')));
 
         $data_validasi = [
-            'jenis'      => $jenis,
-            'jumlah'     => $jumlah,
-            'keterangan' => $keterangan
+            'id_rekening' => $id_rekening,
+            'jumlah'      => $jumlah,
         ];
 
         //Cek Validasi Data Sampah, Jika Data Tidak Valid 
@@ -124,9 +119,8 @@ class Penarikan extends BaseController
             //data sampah
             $data = [
                 'id_nasabah'     => $id_nasabah,
-                'jenis'          => $jenis,
+                'id_rekening'    => $id_rekening,
                 'jumlah'         => $jumlah,
-                'keterangan'     => $keterangan,
                 'tgl_verifikasi' => '-',
             ];
             //Simpan data sampah
@@ -222,7 +216,7 @@ class Penarikan extends BaseController
                 $row[] = date("d-m-Y H:i:s", strtotime($list->tanggal));
                 $row[] = $list->nama_nasabah;
                 $row[] = $list->nama_bank;
-                $row[] = $list->no_rek;
+                $row[] = $list->no_rekening;
                 $row[] = $list->jumlah;
                 $row[] = $list->tgl_verifikasi;
                 $row[] = $list->status;
@@ -252,7 +246,7 @@ class Penarikan extends BaseController
                 $row[] = $no;
                 $row[] = date("d-m-Y H:i:s", strtotime($list->tanggal));
                 $row[] = $list->nama_bank;
-                $row[] = $list->no_rek;
+                $row[] = $list->no_rekening;
                 $row[] = $list->jumlah;
                 $row[] = $list->tgl_verifikasi;
                 $row[] = $list->status;

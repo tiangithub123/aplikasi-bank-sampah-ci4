@@ -5,12 +5,35 @@ This application was created with the intention of reducing household waste whic
 The application was built by Code Igniter 4 Framework Using PHP 7 .
 
 ## Feature App
-- Login admin & staff
-- User Recording 
-- Staff Recording
-- Transaction Recording
-- User Balance Recording
-- 
+- Backhend (Admin)
+  - [x] Login
+  - [x] Dashboard
+  - [x] Penarikan Saldo
+  - [x] Data Sampah
+  - [x] Jenis Sampah
+  - [x] Satuan Sampah
+  - [x] Pengaturan Profil
+  - [x] Managemen User
+  - [x] LogOut
+- Backhend (Staff)
+  - [x] Login
+  - [x] Dashboard
+  - [x] Setor Sampah
+  - [x] Pengaturan Profil
+  - [x] LogOut
+
+- Frontend
+  - [x] Login
+  - [x] Register
+  - [x] Visi dan Misi
+  - [x] Tentang Kami
+- Frontend (Nasabah)
+  - [x] Dashboard
+  - [x] Setor Sampah
+  - [x] Penarikan Saldo
+  - [x] Pengaturan Profil
+  - [x] LogOut
+
 
 ## Required Software & Installation
 - [GIT](https://git-scm.com/downloads)
@@ -112,6 +135,7 @@ Please make sure to update tests as appropriate.
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
 
+<<<<<<< HEAD
 # Aplikasi Bank Sampah | CodeIgniter 4.2.0
 
 ## Progress Pengerjaan
@@ -148,3 +172,5 @@ Please make sure to update tests as appropriate.
   - [x] Data Rekening
   - [x] Pengaturan Profil
   - [x] LogOut
+=======
+>>>>>>> 6a40833ef1cd6a896bd380fe3f1430e7a3d9c0c5

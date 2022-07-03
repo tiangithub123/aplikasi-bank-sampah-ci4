@@ -197,9 +197,6 @@ class Login extends BaseController
                         'username'     => $cekUser['username'],
                         'alamat'       => $cekUser['alamat'],
                         'telepon'      => $cekUser['telepon'],
-                        'nama_bank'    => $cekUser['nama_bank'],
-                        'no_rek'       => $cekUser['no_rek'],
-                        'atas_nama'    => $cekUser['atas_nama'],
                         'saldo'        => $cekUser['saldo'],
                         'foto'         => $cekUser['foto'],
                         'logged_in'    => TRUE

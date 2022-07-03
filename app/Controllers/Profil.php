@@ -182,9 +182,6 @@ class Profil extends BaseController
         $password     = $this->request->getPost('password');
         $alamat       = $this->request->getPost('alamat');
         $telepon      = $this->request->getPost('telepon');
-        $nama_bank    = $this->request->getPost('nama_bank');
-        $no_rek       = $this->request->getPost('no_rek');
-        $atas_nama    = $this->request->getPost('atas_nama');
         $foto         = $this->request->getFile('foto');
 
         //data nasabah
@@ -193,9 +190,6 @@ class Profil extends BaseController
             'username'     => $username,
             'alamat'       => $alamat,
             'telepon'      => $telepon,
-            'nama_bank'    => $nama_bank,
-            'no_rek'       => $no_rek,
-            'atas_nama'    => $atas_nama,
             'foto'         => $foto
         ];
 
@@ -217,9 +211,6 @@ class Profil extends BaseController
                     'username'     => $username,
                     'alamat'       => $alamat,
                     'telepon'      => $telepon,
-                    'nama_bank'    => $nama_bank,
-                    'no_rek'       => $no_rek,
-                    'atas_nama'    => $atas_nama
                 ];
                 //Update data nasabah
                 $this->M_nasabah->update($id, $data);
@@ -238,9 +229,6 @@ class Profil extends BaseController
                     'username'     => $username,
                     'alamat'       => $alamat,
                     'telepon'      => $telepon,
-                    'nama_bank'    => $nama_bank,
-                    'no_rek'       => $no_rek,
-                    'atas_nama'    => $atas_nama,
                     'foto'         => $nama_foto
                 ];
                 // hapus foto lama
@@ -263,9 +251,6 @@ class Profil extends BaseController
                     'password'     => password_hash($password, PASSWORD_DEFAULT),
                     'alamat'       => $alamat,
                     'telepon'      => $telepon,
-                    'nama_bank'    => $nama_bank,
-                    'no_rek'       => $no_rek,
-                    'atas_nama'    => $atas_nama
                 ];
                 //Update data nasabah
                 $this->M_nasabah->update($id, $data);
@@ -285,9 +270,6 @@ class Profil extends BaseController
                     'password'     => password_hash($password, PASSWORD_DEFAULT),
                     'alamat'       => $alamat,
                     'telepon'      => $telepon,
-                    'nama_bank'    => $nama_bank,
-                    'no_rek'       => $no_rek,
-                    'atas_nama'    => $atas_nama,
                     'foto'         => $nama_foto
                 ];
                 // hapus foto lama

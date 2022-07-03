@@ -35,18 +35,6 @@ class Nasabah extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => 15,
             ],
-            'nama_bank'      => [
-                'type'       => 'VARCHAR',
-                'constraint' => 50,
-            ],
-            'no_rek'      => [
-                'type'       => 'VARCHAR',
-                'constraint' => 50,
-            ],
-            'atas_nama'      => [
-                'type'       => 'VARCHAR',
-                'constraint' => 50,
-            ],
             'saldo'      => [
                 'type'       => 'INT',
             ],

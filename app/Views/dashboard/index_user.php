@@ -35,7 +35,7 @@
                             <p>Total Saldo</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-bag"></i>
+                            <i class="fas fa-wallet"></i>
                         </div>
                         <a href="transaksi-penarikan" class="small-box-footer">Lihat <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
@@ -58,7 +58,7 @@
                             <p>Penarikan</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-stats-bars"></i>
+                            <i class="fas fa-hand-holding-usd"></i>
                         </div>
                         <a href="transaksi-penarikan" class="small-box-footer">Lihat <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
@@ -81,7 +81,7 @@
                             <p>Setor Sampah</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-pie-graph"></i>
+                            <i class="fas fa-trash-alt"></i>
                         </div>
                         <a href="transaksi-setor-sampah" class="small-box-footer">Lihat <i class="fas fa-arrow-circle-right"></i></a>
                     </div>

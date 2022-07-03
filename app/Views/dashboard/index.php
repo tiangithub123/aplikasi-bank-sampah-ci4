@@ -45,7 +45,7 @@
                                 <p>Transaksi Penarikan</p>
                             </div>
                             <div class="icon">
-                                <i class="ion ion-bag"></i>
+                                <i class="fas fa-hand-holding-usd"></i>
                             </div>
                             <a href="transaksi-penarikan" class="small-box-footer">Lihat <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
@@ -65,7 +65,7 @@
                                 <p>Data Sampah</p>
                             </div>
                             <div class="icon">
-                                <i class="ion ion-stats-bars"></i>
+                                <i class="fas fa-trash-alt"></i>
                             </div>
                             <a href="sampah" class="small-box-footer">Lihat <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
@@ -77,17 +77,17 @@
                             <div class="inner">
                                 <?php
                                 $db      = \Config\Database::connect();
-                                $builder = $db->table('user');
+                                $builder = $db->table('nasabah');
                                 $builder->select('*');
-                                $user = $builder->countAllResults();
+                                $nasabah = $builder->countAllResults();
                                 ?>
-                                <h3><?= $user; ?></h3>
+                                <h3><?= $nasabah; ?></h3>
                                 <p>Data User</p>
                             </div>
                             <div class="icon">
-                                <i class="ion ion-pie-graph"></i>
+                                <i class="fas fa-users"></i>
                             </div>
-                            <a href="user" class="small-box-footer">Lihat <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="nasabah" class="small-box-footer">Lihat <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
 
@@ -111,7 +111,7 @@
                                 <p>Menunggu</p>
                             </div>
                             <div class="icon">
-                                <i class="ion ion-bag"></i>
+                                <i class="fas fa-exclamation-triangle"></i>
                             </div>
                             <a href="setor-sampah" class="small-box-footer">Lihat <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
@@ -133,7 +133,7 @@
                                 <p>Berhasil</p>
                             </div>
                             <div class="icon">
-                                <i class="ion ion-bag"></i>
+                                <i class="fas fa-check"></i>
                             </div>
                             <a href="setor-sampah" class="small-box-footer">Lihat <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
@@ -155,7 +155,7 @@
                                 <p>Gagal</p>
                             </div>
                             <div class="icon">
-                                <i class="ion ion-bag"></i>
+                                <i class="fas fa-times"></i>
                             </div>
                             <a href="setor-sampah" class="small-box-footer">Lihat <i class="fas fa-arrow-circle-right"></i></a>
                         </div>

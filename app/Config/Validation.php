@@ -71,9 +71,10 @@ class Validation extends BaseConfig
         ],
         'username' => [
             'label'  => 'Username',
-            'rules'  => 'required',
+            'rules'  => 'required|is_unique[nasabah.username]',
             'errors' => [
-                'required' => 'Username Tidak Boleh Kosong!'
+                'required'  => 'Username Tidak Boleh Kosong!',
+                'is_unique' => 'Username sudah pernah digunakan!'
             ]
         ],
         'password' => [
@@ -182,9 +183,10 @@ class Validation extends BaseConfig
         ],
         'username' => [
             'label'  => 'Username',
-            'rules'  => 'required',
+            'rules'  => 'required|is_unique[user.username]',
             'errors' => [
-                'required' => 'Username tidak boleh kosong!'
+                'required'  => 'Username Tidak Boleh Kosong!',
+                'is_unique' => 'Username sudah pernah digunakan!'
             ]
         ],
         'password' => [

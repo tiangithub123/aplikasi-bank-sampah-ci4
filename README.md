@@ -112,8 +112,6 @@ Please make sure to update tests as appropriate.
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
 
-# Aplikasi Bank Sampah | CodeIgniter 4.2.0
-
 ## Progress Pengerjaan
 
 - Backhend (Admin)

@@ -12,6 +12,7 @@ The application was built by Code Igniter 4 Framework Using PHP 7 .
   - [x] Data Sampah
   - [x] Jenis Sampah
   - [x] Satuan Sampah
+  - [x] Data Nasabah
   - [x] Pengaturan Profil
   - [x] Managemen User
   - [x] LogOut
@@ -30,6 +31,7 @@ The application was built by Code Igniter 4 Framework Using PHP 7 .
 - Frontend (Nasabah)
   - [x] Dashboard
   - [x] Setor Sampah
+  - [x] Data Rekening
   - [x] Penarikan Saldo
   - [x] Pengaturan Profil
   - [x] LogOut

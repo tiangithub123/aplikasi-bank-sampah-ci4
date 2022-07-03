@@ -123,6 +123,7 @@ Please make sure to update tests as appropriate.
   - [x] Data Sampah
   - [x] Jenis Sampah
   - [x] Satuan Sampah
+  - [x] Data Nasabah
   - [x] Pengaturan Profil
   - [x] Managemen User
   - [x] LogOut
@@ -138,9 +139,12 @@ Please make sure to update tests as appropriate.
   - [x] Register
   - [x] Visi dan Misi
   - [x] Tentang Kami
+  - [x] Kontak Kami
+  - [x] Faq
 - Frontend (Nasabah)
   - [x] Dashboard
   - [x] Setor Sampah
   - [x] Penarikan Saldo
+  - [x] Data Rekening
   - [x] Pengaturan Profil
   - [x] LogOut

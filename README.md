@@ -2,7 +2,7 @@
 
 This application was created with the intention of reducing household waste which usually only ends up in landfills. With this application, you can connect customers with businesses, one of the concepts of the C2B business model that can be used for sustainable projects.
  
-The application was built by Code Igniter 4 Framework Using PHP 7 .
+The application was built by Codeigniter 4 Framework Using PHP 7 .
 
 ## Feature App
 - Backhend (Admin)
